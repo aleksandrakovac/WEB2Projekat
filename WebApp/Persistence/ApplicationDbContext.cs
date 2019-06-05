@@ -11,7 +11,14 @@ namespace WebApp.Persistence
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Product> products { get; set; }
+        public DbSet<Linija> Linija { get; set; }
+        public DbSet<DanUNedelji> DanUNedelji { get; set; }
+        public DbSet<Polazak> Polazak { get; set; }
+        public DbSet<Stanica> Stanica { get; set; }
+        public DbSet<TipPolaska> TipPolaska { get; set; }
+        public DbSet<Vozilo> Vozilo { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
