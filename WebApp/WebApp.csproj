@@ -267,7 +267,12 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\DanUNedelji.cs" />
+    <Compile Include="Models\Linija.cs" />
+    <Compile Include="Models\Stanica.cs" />
+    <Compile Include="Models\TipPolaska.cs" />
+    <Compile Include="Models\Vozilo.cs" />
+    <Compile Include="Models\Polazak.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
