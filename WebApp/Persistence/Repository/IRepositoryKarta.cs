@@ -7,7 +7,7 @@ using WebApp.Models;
 
 namespace WebApp.Persistence.Repository
 {
-    public interface IRepositroyKarta : IRepository<Karta, int>
+    public interface IRepositoryKarta : IRepository<Karta, int>
     {
     }
 }

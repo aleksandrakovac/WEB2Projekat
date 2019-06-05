@@ -7,7 +7,7 @@ using WebApp.Models;
 
 namespace WebApp.Persistence.Repository
 {
-    public class RepositoryTipKorisnika : Repository<TipKorisnika, int>, IRepositroyTipKorisnika
+    public class RepositoryTipKorisnika : Repository<TipKorisnika, int>, IRepositoryTipKorisnika
     {
          public RepositoryTipKorisnika(DbContext context) : base(context)
         {

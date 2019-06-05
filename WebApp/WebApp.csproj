@@ -289,8 +289,8 @@
     <Compile Include="Persistence\Repository\IRepositoryTipKarte.cs" />
     <Compile Include="Persistence\Repository\IRepositoryTipPolaska.cs" />
     <Compile Include="Persistence\Repository\IRepositoryVozilo.cs" />
-    <Compile Include="Persistence\Repository\IRepositroyKarta.cs" />
-    <Compile Include="Persistence\Repository\IRepositroyTipKorisnika.cs" />
+    <Compile Include="Persistence\Repository\IRepositoryKarta.cs" />
+    <Compile Include="Persistence\Repository\IRepositoryTipKorisnika.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
     <Compile Include="Persistence\Repository\RepositoryCijenaKarte.cs" />
     <Compile Include="Persistence\Repository\RepositoryCjenovnik.cs" />

@@ -7,7 +7,7 @@ using WebApp.Models;
 
 namespace WebApp.Persistence.Repository
 {
-    public interface IRepositroyTipKorisnika : IRepository<TipKorisnika, int>
+    public interface IRepositoryTipKorisnika : IRepository<TipKorisnika, int>
     {
     }
 }
