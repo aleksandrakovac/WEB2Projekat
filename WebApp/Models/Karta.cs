@@ -13,8 +13,8 @@ namespace WebApp.Models
         [Required]
         public double Cijena { get; set; } 
 
-        public int UserId { get; set; }
-        public ApplicationUser User { get; set; }
+        public int KorisnikId { get; set; }
+        public ApplicationUser Korisnik { get; set; }
 
     }
 }
