@@ -255,13 +255,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811252201504_jgsp.cs" />
+    <Compile Include="Migrations\201811252201504_jgsp.Designer.cs">
+      <DependentUpon>201811252201504_jgsp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201905222056072_InitialMigration.cs" />
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905270920284_AddProduct.cs" />
-    <Compile Include="Migrations\201905270920284_AddProduct.Designer.cs">
-      <DependentUpon>201905270920284_AddProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -403,11 +403,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811252201504_jgsp.resx">
+      <DependentUpon>201811252201504_jgsp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905270920284_AddProduct.resx">
-      <DependentUpon>201905270920284_AddProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace WebApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddProduct : IMigrationMetadata
+    public sealed partial class jgsp : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddProduct));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(jgsp));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905270920284_AddProduct"; }
+            get { return "201811252201504_jgsp"; }
         }
         
         string IMigrationMetadata.Source
