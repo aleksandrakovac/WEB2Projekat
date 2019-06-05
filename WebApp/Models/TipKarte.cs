@@ -8,7 +8,8 @@ namespace WebApp.Models
 {
     public class TipKarte
     {
-       public int Id { get; set; }
-       [Required]
-       public string Ime { get; set; }
+        public int Id { get; set; }
+        [Required]
+        public string Ime { get; set; }
+    }
 }

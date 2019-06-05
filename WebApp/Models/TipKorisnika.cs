@@ -15,4 +15,3 @@ namespace WebApp.Models
         public List<ApplicationUser> Korisnici { get; set; }
     }
 }
-}
