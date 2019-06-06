@@ -22,6 +22,81 @@ namespace WebApp.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
+            //DanUNedelji
+            if(!context.DanUNedelji.Any(d => d.Naziv == "Radni dan"))
+            {
+                DanUNedelji danUNedelji = new DanUNedelji() { Naziv = "Radni dan", Id = 1 };
+                context.DanUNedelji.Add(danUNedelji);
+                context.SaveChanges();
+            }
+            if (!context.DanUNedelji.Any(d => d.Naziv == "Subota"))
+            {
+                DanUNedelji danUNedelji = new DanUNedelji() { Naziv = "Subota", Id = 2 };
+                context.DanUNedelji.Add(danUNedelji);
+                context.SaveChanges();
+            }
+            if (!context.DanUNedelji.Any(d => d.Naziv == "Nedelja"))
+            {
+                DanUNedelji danUNedelji = new DanUNedelji() { Naziv = "Nedelja", Id = 3 };
+                context.DanUNedelji.Add(danUNedelji);
+                context.SaveChanges();
+            }
+            //TipPolaska
+            if (!context.TipPolaska.Any(d => d.Naziv == "Gradski"))
+            {
+                TipPolaska tipPolaska = new TipPolaska() { Naziv = "Gradski", Id = 1 };
+                context.TipPolaska.Add(tipPolaska);
+                context.SaveChanges();
+            }
+            if (!context.TipPolaska.Any(d => d.Naziv == "Prigradski"))
+            {
+                TipPolaska tipPolaska = new TipPolaska() { Naziv = "Prigradski", Id = 2 };
+                context.TipPolaska.Add(tipPolaska);
+                context.SaveChanges();
+            }
+            //stanice
+            if (!context.Stanica.Any(d => d.Ime == "Prva"))
+            {
+                Stanica stanica = new Stanica() {Id = 1, Ime = "Prva", Adresa = "Adresa Prve", X = 22, Y = 34 };
+                context.Stanica.Add(stanica);
+                context.SaveChanges();
+            }
+            if (!context.Stanica.Any(d => d.Ime == "Druga"))
+            {
+                Stanica stanica = new Stanica() {Id = 2, Ime = "Druga", Adresa = "Adresa Druge", X = 22, Y = 34 };
+                context.Stanica.Add(stanica);
+                context.SaveChanges();
+            }
+
+            //Linija
+            if (!context.Linija.Any(t => t.Id == 1))
+            {
+                Linija linija = new Linija() { Id = 1, SerijskiBroj = 1 };
+                context.Linija.Add(linija);
+                context.SaveChanges();
+            }
+
+            if (!context.Linija.Any(t => t.Id == 2))
+            {
+                Linija linija = new Linija() { Id = 2, SerijskiBroj = 2 };
+                context.Linija.Add(linija);
+                context.SaveChanges();
+            }
+            //Polasci
+            if (!context.Polazak.Any(t => t.Id == 1))
+            {
+                Polazak polazak = new Polazak() { Id = 1, LinijaId = 1, TipPolaskaId = 1, DanUNedeljiId = 1, Vremena = "9:50 10:50 11:50" };
+                context.Polazak.Add(polazak);
+                context.SaveChanges();
+            }
+            if (!context.Polazak.Any(t => t.Id == 2))
+            {
+                Polazak polazak = new Polazak() { Id = 2, LinijaId = 2, TipPolaskaId = 2, DanUNedeljiId = 2, Vremena = "9:50 10:50 11:50 12:50 13:50" };
+                context.Polazak.Add(polazak);
+                context.SaveChanges();
+            }
+
+
             if (!context.Roles.Any(r => r.Name == "Admin"))
             {
                 var store = new RoleStore<IdentityRole>(context);

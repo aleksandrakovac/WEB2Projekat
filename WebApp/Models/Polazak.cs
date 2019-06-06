@@ -15,6 +15,10 @@ namespace WebApp.Models
         public int DanUNedeljiId { get; set; }
         public DanUNedelji DanUNedelji { get; set; }
 
+        public int LinijaId { get; set; }
+        public Linija Linija { get; set; }
+
+
         public String Vremena { get; set; }
     }
 }
