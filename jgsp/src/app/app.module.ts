@@ -1,26 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { RouterModule,Routes} from '@angular/router';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { LoginComponent } from './login/login.component';
-import { ModelsComponent } from './models/models.component';
+import { PocetnaComponent } from './pocetna/pocetna.component';
+import { AuthHttpService } from 'src/services/http/auth.service';
+
+const routes : Routes = [
+  {path : "login", component: LoginComponent},
+  {path : "pocetna", component: PocetnaComponent},
+  {path : "", component: PocetnaComponent, pathMatch:"full"},
+  {path : "**", redirectTo: "login"},
+]
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
     LoginComponent,
-    ModelsComponent
+    PocetnaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)  
   ],
   providers: [],
   bootstrap: [AppComponent]
