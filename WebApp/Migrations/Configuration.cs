@@ -170,7 +170,7 @@ namespace WebApp.Migrations
             }
             if (!context.CijenaKarte.Any(d => d.Id == 2))
             {
-                CijenaKarte cijenaKarte = new CijenaKarte() { Id = 2, Cijena = 65, CjenovnikId = 2, TipKarteId = 2 };
+                CijenaKarte cijenaKarte = new CijenaKarte() { Id = 2, Cijena = 65, CjenovnikId = 1, TipKarteId = 1 };
                 context.CijenaKarte.Add(cijenaKarte);
                 context.SaveChanges();
             }
