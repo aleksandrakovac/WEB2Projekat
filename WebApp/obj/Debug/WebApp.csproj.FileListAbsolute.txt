@@ -295,7 +295,6 @@ C:\Users\Dejana\Documents\GitHub\WEB2Projekat\WebApp\bin\System.Web.Http.Owin.xm
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
-C:\Users\Dejana\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.Migrations.AddProduct.resources
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.csproj.GenerateResource.cache
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.csproj.CopyComplete
@@ -447,3 +446,4 @@ C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.csproj.C
 C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.dll
 C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.pdb
 C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.Migrations.jgsp.resources
+C:\Users\Dejana\Documents\GitHub\WEB2Projekat\WebApp\obj\Debug\WebApp.Migrations.jgsp.resources

@@ -121,21 +121,10 @@ namespace WebApp.Migrations
             AddColumn("dbo.AspNetUsers", "Prezime", c => c.String());
             CreateIndex("dbo.AspNetUsers", "TipId");
             AddForeignKey("dbo.AspNetUsers", "TipId", "dbo.TipKorisnikas", "Id", cascadeDelete: true);
-            DropTable("dbo.Products");
         }
         
         public override void Down()
-        {
-            CreateTable(
-                "dbo.Products",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Price = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
+        {            
             DropForeignKey("dbo.AspNetUsers", "TipId", "dbo.TipKorisnikas");
             DropForeignKey("dbo.Kartas", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Polazaks", "Linija_Id", "dbo.Linijas");
