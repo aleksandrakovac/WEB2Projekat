@@ -69,30 +69,109 @@ namespace WebApp.Migrations
             }
 
             //Linija
-            if (!context.Linija.Any(t => t.Id == 1))
+            if (!context.Linija.Any(d => d.Id == 1))
             {
                 Linija linija = new Linija() { Id = 1, SerijskiBroj = 1 };
                 context.Linija.Add(linija);
                 context.SaveChanges();
             }
 
-            if (!context.Linija.Any(t => t.Id == 2))
+            if (!context.Linija.Any(d => d.Id == 2))
             {
                 Linija linija = new Linija() { Id = 2, SerijskiBroj = 2 };
                 context.Linija.Add(linija);
                 context.SaveChanges();
             }
             //Polasci
-            if (!context.Polazak.Any(t => t.Id == 1))
+            if (!context.Polazak.Any(d => d.Id == 1))
             {
                 Polazak polazak = new Polazak() { Id = 1, LinijaId = 1, TipPolaskaId = 1, DanUNedeljiId = 1, Vremena = "9:50 10:50 11:50" };
                 context.Polazak.Add(polazak);
                 context.SaveChanges();
             }
-            if (!context.Polazak.Any(t => t.Id == 2))
+            if (!context.Polazak.Any(d => d.Id == 2))
             {
                 Polazak polazak = new Polazak() { Id = 2, LinijaId = 2, TipPolaskaId = 2, DanUNedeljiId = 2, Vremena = "9:50 10:50 11:50 12:50 13:50" };
                 context.Polazak.Add(polazak);
+                context.SaveChanges();
+            }
+
+            //TipKarte
+            if(!context.TipKarte.Any(d => d.Ime == "Vremenska karta"))
+            {
+                TipKarte tipKarte = new TipKarte() { Ime = "Vremenska karta", Id = 1 };
+                context.TipKarte.Add(tipKarte);
+                context.SaveChanges();
+            }
+
+            if (!context.TipKarte.Any(d => d.Ime == "Dnevna karta"))
+            {
+                TipKarte tipKarte = new TipKarte() { Ime = "Dnevna karta", Id = 2 };
+                context.TipKarte.Add(tipKarte);
+                context.SaveChanges();
+            }
+
+            if (!context.TipKarte.Any(d => d.Ime == "Mjesecna karta"))
+            {
+                TipKarte tipKarte = new TipKarte() { Ime = "Mjesecna karta", Id = 3 };
+                context.TipKarte.Add(tipKarte);
+                context.SaveChanges();
+            }
+
+            if (!context.TipKarte.Any(d => d.Ime == "Godisnja karta"))
+            {
+                TipKarte tipKarte = new TipKarte() { Ime = "Godisnja karta", Id = 4 };
+                context.TipKarte.Add(tipKarte);
+                context.SaveChanges();
+            }
+
+            //TipKorisnika
+            if(!context.TipKorisnika.Any(d => d.Ime == "Djak"))
+            {
+                TipKorisnika tipKorisnika = new TipKorisnika() { Ime = "Djak", Id = 1 };
+                context.TipKorisnika.Add(tipKorisnika);
+                context.SaveChanges();
+            }
+
+            if (!context.TipKorisnika.Any(d => d.Ime == "Penzioner"))
+            {
+                TipKorisnika tipKorisnika = new TipKorisnika() { Ime = "Penzioner", Id = 2 };
+                context.TipKorisnika.Add(tipKorisnika);
+                context.SaveChanges();
+            }
+
+            if (!context.TipKorisnika.Any(d => d.Ime == "Regularan korisnik"))
+            {
+                TipKorisnika tipKorisnika = new TipKorisnika() { Ime = "Regularan korisnik", Id = 3 };
+                context.TipKorisnika.Add(tipKorisnika);
+                context.SaveChanges();
+            }
+
+            //Cjenovnik
+            if(!context.Cjenovnik.Any(d => d.Id == 1))
+            {
+                Cjenovnik cjenovnik = new Cjenovnik() { Id = 1, Polaziste = DateTime.Now.ToString(), Dolaziste = DateTime.Now.ToString() };
+                context.Cjenovnik.Add(cjenovnik);
+                context.SaveChanges();
+            }
+            if (!context.Cjenovnik.Any(d => d.Id == 2))
+            {
+                Cjenovnik cjenovnik = new Cjenovnik() { Id = 2, Polaziste = DateTime.Now.ToString(), Dolaziste = DateTime.Now.ToString() };
+                context.Cjenovnik.Add(cjenovnik);
+                context.SaveChanges();
+            }
+
+            //CijenaKarte
+            if(!context.CijenaKarte.Any(d => d.Id == 1))
+            {
+                CijenaKarte cijenaKarte = new CijenaKarte() { Id = 1, Cijena = 65, CjenovnikId = 1, TipKarteId = 1 };
+                context.CijenaKarte.Add(cijenaKarte);
+                context.SaveChanges();
+            }
+            if (!context.CijenaKarte.Any(d => d.Id == 2))
+            {
+                CijenaKarte cijenaKarte = new CijenaKarte() { Id = 2, Cijena = 65, CjenovnikId = 2, TipKarteId = 2 };
+                context.CijenaKarte.Add(cijenaKarte);
                 context.SaveChanges();
             }
 
