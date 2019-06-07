@@ -256,6 +256,8 @@
     <Compile Include="Controllers\PricelistsController.cs" />
     <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Controllers\TicketsOfPriceController.cs" />
+    <Compile Include="Controllers\TimetablesController.cs" />
+    <Compile Include="Controllers\TypeTicketsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -374,6 +376,8 @@
     <Folder Include="Views\Pricelists\" />
     <Folder Include="Views\PriceOfTickets\" />
     <Folder Include="Views\Stations\" />
+    <Folder Include="Views\Timetables\" />
+    <Folder Include="Views\TypeTickets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
