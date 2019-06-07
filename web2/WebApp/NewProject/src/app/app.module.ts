@@ -16,6 +16,7 @@ import { FolderComponent } from './folder/folder.component';
 import { RegistracijaComponent } from './registracija/registracija.component';
 import { AuthHttpService } from 'src/app/services/http/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
 
 const routes : Routes = [
   {path:"home", component: HomeComponent},
@@ -32,7 +33,8 @@ const routes : Routes = [
     NavigationComponent,
     LoginComponent,
     FolderComponent,
-    RegistracijaComponent
+    RegistracijaComponent,
+    RedvoznjeComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [HttpService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},AuthHttpService,],
+  providers: [HttpService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},AuthHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
