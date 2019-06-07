@@ -254,6 +254,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinesController.cs" />
     <Compile Include="Controllers\PricelistsController.cs" />
+    <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Controllers\TicketsOfPriceController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -372,6 +373,7 @@
     <Folder Include="Views\Lines\" />
     <Folder Include="Views\Pricelists\" />
     <Folder Include="Views\PriceOfTickets\" />
+    <Folder Include="Views\Stations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
