@@ -5,15 +5,11 @@ using System.Web;
 
 namespace WebApp.Models
 {
-    public class Line
+    public class Day
     {
         public int Id { get; set; }
 
-        [Required]
-        public int SerialNumber { get; set; }
-
-        public List<Vehicle> Vehicles { get; set; }
-        public List<Station> Stations { get; set; }
+        public string DayOfWeek { get; set; }
         public List<Timetable> Timetables { get; set; }
     }
 }
