@@ -11,7 +11,26 @@ namespace WebApp.Persistence.UnitOfWork
     public class DemoUnitOfWork : IUnitOfWork
     {
         private readonly DbContext _context;
-      
+
+        [Dependency]
+        public IDayRepository DayRepository { get; set; }
+        [Dependency]
+        public ILineRepository LineRepository { get; set; }
+        [Dependency]
+        public IPricelistRepository PricelistRepository { get; set; }
+        [Dependency]
+        public IPriceOfTicketRepository PriceOfTicketRepository { get; set; }
+        [Dependency]
+        public IStationRepository StationRepository { get; set; }
+        [Dependency]
+        public ITimetableRepository TimetableRepository { get; set; }
+        [Dependency]
+        public ITypeTicketRepository TypeTicketRepository { get; set; }
+
+        [Dependency]
+        public ITimetableTypeRepository TimetableTypeRepository { get; set; }
+
+
         public DemoUnitOfWork(DbContext context)
         {
             _context = context;
