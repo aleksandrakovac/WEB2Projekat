@@ -253,6 +253,7 @@
     <Compile Include="Controllers\DaysController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinesController.cs" />
+    <Compile Include="Controllers\PricelistsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -368,6 +369,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Days\" />
     <Folder Include="Views\Lines\" />
+    <Folder Include="Views\Pricelists\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
