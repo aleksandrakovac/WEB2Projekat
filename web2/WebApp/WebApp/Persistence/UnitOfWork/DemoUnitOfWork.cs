@@ -19,7 +19,7 @@ namespace WebApp.Persistence.UnitOfWork
         [Dependency]
         public IPricelistRepository PricelistRepository { get; set; }
         [Dependency]
-        public IPriceOfTicketRepository PriceOfTicketRepository { get; set; }
+        public ITicketPriceRepository PriceOfTicketRepository { get; set; }
         [Dependency]
         public IStationRepository StationRepository { get; set; }
         [Dependency]
