@@ -21,7 +21,7 @@ namespace WebApp.Persistence
         public DbSet<Cjenovnik> Cjenovnik { get; set; }
         public DbSet<Karta> Karta { get; set; }
         public DbSet<TipKarte> TipKarte { get; set; }
-        public DbSet<TipKorisnika> TipKorisnika { get; set; }
+        //public DbSet<TipKorisnika> TipKorisnika { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

@@ -29,7 +29,7 @@ export class RegistracijaComponent implements OnInit {
 
   registracija()
   {
-    let registracijaModel: Korisnk = this.registracijaForm.value;
+    let registracijaModel: Korisnik = this.registracijaForm.value;
     this.http.register(registracijaModel).subscribe(temp => {
       if(temp == "uspijesno")
       {

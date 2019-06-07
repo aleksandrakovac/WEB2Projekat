@@ -10,11 +10,11 @@ export class AuthHttpService{
 
     }
 
-    logIn(username: string, password: string) : Observable<any>{
+    logIn(korisnickoIme: string, lozinka: string) : Observable<any>{
 
         return Observable.create((observer) => {
 
-            let data = `username=${username}&password=${password}&grant_type=password`;
+            let data = `korisnickoIme=${korisnickoIme}&lozinka=${lozinka}&grant_type=lozinka`;
             let httpOptions={
                 headers:{
                     "Content-type": "application/x-www-form-urlencoded"
@@ -36,7 +36,7 @@ export class AuthHttpService{
                 console.log('Role ' + role)
 
                 observer.next("uspesno");
-                localStorage.setItem("loggedUser",username);
+                localStorage.setItem("ulogovaniKorisnik",korisnickoIme);
                 observer.complete();
             },
             err => {
@@ -50,7 +50,7 @@ export class AuthHttpService{
 
     logOut(): Observable<any>{
         return Observable.create((observer) => {
-            localStorage.setItem("loggedUser",undefined);
+            localStorage.setItem("ulogovaniKorisnik",undefined);
             localStorage.jwt = undefined;
         });
     }

@@ -37,9 +37,9 @@ namespace WebApp.Persistence.UnitOfWork
         public IRepositoryTipPolaska RepositoryTipPolaska { get; set; }
 
         [Dependency]
-        public IRepositoryTipKorisnika RepositoryTipKorisnika { get; set; }
+       // public IRepositoryTipKorisnika RepositoryTipKorisnika { get; set; }
 
-        [Dependency]
+        //[Dependency]
         public IRepositoryVozilo RepositoryVozilo { get; set; }
 
         public DemoUnitOfWork(DbContext context)

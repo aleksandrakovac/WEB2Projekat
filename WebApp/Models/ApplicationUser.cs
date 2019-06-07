@@ -16,7 +16,7 @@ namespace WebApp.Models
     public class ApplicationUser : IdentityUser
     {
         public int TipId { get; set; }
-        public TipKorisnika Tip { get; set; }
+        //public TipKorisnika? Tip { get; set; }
         public List<Karta> Karte { get; set; }
 
         //[Required]

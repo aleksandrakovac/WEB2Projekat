@@ -12,9 +12,37 @@ import { Korisnik } from '../models/korisnik';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+
+  loginForm = this.fb.group({
+    Username: ['', Validators.required],
+    Password: ['', Validators.required]
+  });
+  
+  constructor(private http:AuthHttpService, private router: Router,private fb: FormBuilder) { }
+
 
   ngOnInit() {
+  }
+
+  logout(){
+    localStorage.jwt = undefined;
+    localStorage.loggedUser = undefined;
+  }
+
+  login(){
+    let korisnik: Korisnik = this.loginForm.value;
+    this.http.logIn(korisnik.KorisnickoIme,korisnik.Lozinka).subscribe(temp => {
+      if(temp == "uspesno")
+      {
+        console.log(temp);
+        this.router.navigate(["/pocentna"])
+      }
+      else if(temp == "neuspesno")
+      {
+        console.log(temp);
+        this.router.navigate(["/login"])
+      }
+    });
   }
 
 }

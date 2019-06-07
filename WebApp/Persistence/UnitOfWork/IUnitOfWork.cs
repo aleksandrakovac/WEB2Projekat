@@ -26,7 +26,7 @@ namespace WebApp.Persistence.UnitOfWork
 
         IRepositoryTipPolaska RepositoryTipPolaska { get; set; }
 
-        IRepositoryTipKorisnika RepositoryTipKorisnika { get; set; }
+        //IRepositoryTipKorisnika RepositoryTipKorisnika { get; set; }
 
         IRepositoryVozilo RepositoryVozilo { get; set; }
 
