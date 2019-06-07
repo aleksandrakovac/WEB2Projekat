@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.Persistence.Repository
 {
-    public interface ILineRepository
+    public interface ILineRepository : IRepository<Line, int>
     {
     }
 }

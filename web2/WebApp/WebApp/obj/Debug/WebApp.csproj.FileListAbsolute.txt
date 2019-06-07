@@ -1,0 +1,4 @@
+C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
+C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
+C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.csproj.GenerateResource.cache
+C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache

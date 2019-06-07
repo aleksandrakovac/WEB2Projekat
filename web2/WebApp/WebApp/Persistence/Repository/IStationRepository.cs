@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.Persistence.Repository
 {
-    public interface IStationRepository
+    public interface IStationRepository : IRepository<Station, int>
     {
     }
 }
