@@ -14,12 +14,12 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
-    [RoutePrefix("api/TicketOfPrice")]
-    public class TicketsOfPriceController : ApiController
+    [RoutePrefix("api/TicketPrice")]
+    public class TicketPriceController : ApiController
     {
         private IUnitOfWork unitOfWork;
 
-        public TicketsOfPriceController(IUnitOfWork unitOfWork)
+        public TicketPriceController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
@@ -70,7 +70,7 @@ namespace WebApp.Controllers
 
         // PUT: api/PriceOfTickets/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPriceOfTicket(int id, PriceOfTicket priceOfTicket)
+        public IHttpActionResult PutPriceOfTicket(int id, TicketPrice priceOfTicket)
         {
             if (!ModelState.IsValid)
             {
