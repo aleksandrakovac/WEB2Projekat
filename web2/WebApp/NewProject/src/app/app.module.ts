@@ -17,6 +17,8 @@ import { RegistracijaComponent } from './registracija/registracija.component';
 import { AuthHttpService } from 'src/app/services/http/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
+import { CjenovnikComponent } from './cjenovnik/cjenovnik.component';
+import { KartaComponent } from './karta/karta.component';
 
 const routes : Routes = [
   {path:"home", component: HomeComponent},
@@ -34,7 +36,9 @@ const routes : Routes = [
     LoginComponent,
     FolderComponent,
     RegistracijaComponent,
-    RedvoznjeComponent
+    RedvoznjeComponent,
+    CjenovnikComponent,
+    KartaComponent
   ],
   imports: [
     BrowserModule,
