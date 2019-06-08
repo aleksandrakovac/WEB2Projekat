@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
 import { CjenovnikComponent } from './cjenovnik/cjenovnik.component';
 import { KartaComponent } from './karta/karta.component';
+import { LinijeComponent } from './linije/linije.component';
 
 const routes : Routes = [
   {path:"home", component: HomeComponent},
@@ -38,7 +39,8 @@ const routes : Routes = [
     RegistracijaComponent,
     RedvoznjeComponent,
     CjenovnikComponent,
-    KartaComponent
+    KartaComponent,
+    LinijeComponent
   ],
   imports: [
     BrowserModule,
