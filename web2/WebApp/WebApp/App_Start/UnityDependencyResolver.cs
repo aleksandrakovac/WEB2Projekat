@@ -67,8 +67,17 @@ namespace WebApp.App_Start
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-           
+
             container.RegisterType<DbContext, ApplicationDbContext>(new PerResolveLifetimeManager());
+            container.RegisterType<IDayRepository, DayRepository>();
+            container.RegisterType<ILineRepository, LineRepository>();
+            container.RegisterType<IPricelistRepository, PricelistRepository>();
+            container.RegisterType<ITicketPriceRepository, TicketPriceRepository>();
+            container.RegisterType<IStationRepository, StationRepository>();
+            container.RegisterType<ITimetableRepository, TimetableRepository>();
+            container.RegisterType<ITypeTicketRepository, TypeTicketRepository>();
+            container.RegisterType<ITimetableTypeRepository, TimetableTypeRepository>();
+            container.RegisterType<IAppUserRepository, AppUserRepository>();
             container.RegisterType<IUnitOfWork, DemoUnitOfWork>();
         }
 

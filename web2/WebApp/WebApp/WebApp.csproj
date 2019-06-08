@@ -262,9 +262,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911252203273_jgsp.cs" />
-    <Compile Include="Migrations\201911252203273_jgsp.Designer.cs">
-      <DependentUpon>201911252203273_jgsp.cs</DependentUpon>
+    <Compile Include="Migrations\201911260119145_jgsp.cs" />
+    <Compile Include="Migrations\201911260119145_jgsp.Designer.cs">
+      <DependentUpon>201911260119145_jgsp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201905222056072_InitialMigration.cs" />
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
@@ -284,7 +284,9 @@
     <Compile Include="Models\TimetableType.cs" />
     <Compile Include="Models\TypeTicket.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Persistence\Repository\AppUserRepository.cs" />
     <Compile Include="Persistence\Repository\DayRepository.cs" />
+    <Compile Include="Persistence\Repository\IAppUserRepository.cs" />
     <Compile Include="Persistence\Repository\IDayRepository.cs" />
     <Compile Include="Persistence\Repository\ILineRepository.cs" />
     <Compile Include="Persistence\Repository\IPricelistRepository.cs" />
@@ -409,8 +411,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911252203273_jgsp.resx">
-      <DependentUpon>201911252203273_jgsp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911260119145_jgsp.resx">
+      <DependentUpon>201911260119145_jgsp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>

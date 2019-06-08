@@ -20,10 +20,17 @@ import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
 import { CjenovnikComponent } from './cjenovnik/cjenovnik.component';
 import { KartaComponent } from './karta/karta.component';
 import { LinijeComponent } from './linije/linije.component';
+import { RedVoznjeHttpService } from './services/redvoznje.service';
 
 const routes : Routes = [
   {path:"home", component: HomeComponent},
   {path:"login", component: LoginComponent},
+  {path:"registracija", component: RegistracijaComponent},
+  {path:"linije", component: LinijeComponent},
+  {path:"redvoznje", component: RedvoznjeComponent},
+  {path:"cjenovnik", component: CjenovnikComponent},
+  {path:"karta", component: KartaComponent},
+
   
 
   {path: "", component: HomeComponent, pathMatch: "full"},
@@ -50,7 +57,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [HttpService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},AuthHttpService],
+  providers: [HttpService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},AuthHttpService, RedVoznjeHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

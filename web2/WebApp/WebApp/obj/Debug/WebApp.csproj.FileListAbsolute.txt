@@ -147,7 +147,6 @@ C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\bin\Microsoft
 C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.pdb
-C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.Migrations.jgsp.resources
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.Migrations.jgsp.resources
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
@@ -155,3 +154,4 @@ C:\Users\Dejana\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebAp
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\Dejana\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\KorisniK\Documents\GitHub\WEB2Projekat\web2\WebApp\WebApp\obj\Debug\WebApp.Migrations.jgsp.resources
