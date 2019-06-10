@@ -1,90 +1,87 @@
-<form id="rvform" name="rvform" action="redvoznje.php" method="get">
-                       
-  <table class="cenovnik-form" width="100%">
-  <tbody><tr>
-      <td width="210px">
-          <span class="lightblue-box-label"> Red voznje vazi od </span>
-      </td>
-      <td align="left">
-           <select class="selectbox" id="vaziod" onchange="lista_linija();" name="vaziod">
-                                                  <option value="2019-05-25"> 
-                  25.05.2019 
-              </option>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+       <!--forms-->
+ <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+  <div class="account-holder">
+      <h3>RED VOZNJE</h3>
+      <br>
+      
+      <div class="row">
+          <form id="rvform" name="rvform" action="redvoznje.php" method="get"> 
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label" >Red voznje vazi od </label>
+                        <select class="form-control" id="vaziod" placeholder="Izaberite datum" onchange="lista_linija();" name="vaziod">
+                            <option value="2019-05-25"> 
+                              25.05.2019 
+                            </option>
+
+                        </select>
+                    </div>
+                </div>
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    
+
+                    <label class="control-label" >Red voznje </label>
+                    <select class="form-control" [(ngModel)]="selectedTimetableType" name="selectedTimetableType">
+                        <option *ngFor="let TimetableType of timetableInfo.TimetableTypes" [ngValue]="TimetableType">
+                            {{TimetableType.Name}}
+                        </option>
+
+                    </select>
                   
-        </select>
-      </td>
-  </tr>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                      
+                      <label class="control-label" >Dan </label>
+                      <select class="form-control" [(ngModel)]="selectedDay" name="selectedDay">
+                          <option *ngFor="let Day of timetableInfo.Day" [ngValue]="Day">
+                              {{Day.DayOfWeek}}
+                            </option>
   
- 
-  <tr>
-      <td width="210px">
-          <span class="lightblue-box-label"> Red voznje </span>
-      </td>
-      <td align="left">
-         
-        <select [(ngModel)]="selectedTimetableType" name="selectedTimetableType">
-          <option *ngFor="let TimetableType of timetableInfo.TimetableTypes" [ngValue]="TimetableType">
-            {{TimetableType.Name}}
-          </option>
-        </select>
-         
-      </td>
-  </tr>
-  
-  
-  <tr>
-      <td align="left">
-          <span class="lightblue-box-label">
-            Dan
-          </span>
-      </td>
-      <td align="left">
-          
-        <select [(ngModel)]="selectedDay" name="selectedDay" >
-          <option *ngFor="let Day of timetableInfo.Day" [ngValue]="Day">
-            {{Day.DayOfWeek}}
-          </option>
-        </select>
-          
-      </td>
-  </tr>
-  
-  
-  <tr>
-      <td align="left">
-      
-        <span class="lightblue-box-label">
-          Linija
-            <br>
-              (Izaberite liniju) 
-           </span>
-      
-      </td>
-      <td align="left" valign="top">    
-        <div id="lista_linija">		
-          <select [(ngModel)]="selectedLine" name="selectedLine" (change)="changeselectedLine()">
-            <option *ngFor="let Line of timetableInfo.Lines" [ngValue]="Line">
-              {{Line.Number}}
-            </option>
-          </select>
-        </div>                               
-      </td>
-   </tr>
-   <tr>    
-       
-      <td></td>
-      <td>
-      
-      <div align="right">
-        <button (click)="ispisPolaska()" [disabled]="selectedTimetableType.Id==undefined || selectedDay.Id==undefined || selectedLine.Id==undefined">Prikazi</button>
-      </div>
-      </td>
-    </tr>
-  
-    </tbody>
-  </table>
+                      </select>
 
-  Polasci sa stanice:<br>
-  {{timetable.Info}}
+                  </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <div class="form-group">
 
-</form>
+                    <label class="control-label" >Linija </label>
+                    <select class="form-control" [(ngModel)]="selectedLine" name="selectedLine" (change)="changeselectedLine()">
+                        <option *ngFor="let Line of timetableInfo.Lines" [ngValue]="Line">
+                          {{Line.Number}}
+                        </option>
+                      </select>
+                    
+                  
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+              <div class="form-group">
+            
+                    <button type="submit" class="btn btn-primary btn-block" (click)="ispisPolaska()" [disabled]="selectedTimetableType.Id==undefined || selectedDay.Id==undefined || selectedLine.Id==undefined">Prikazi</button>
+             
+              </div>
+           </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+              
+              <label class="control-label">Polasci sa stanice</label>
+              <label class="control-label">{{timetable.Info}}</label>
+             
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+
