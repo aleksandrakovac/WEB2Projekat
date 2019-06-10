@@ -14,6 +14,5 @@ namespace WebApp.Models
         public List<Station> Stations { get; set; }
         public List<Timetable> Timetables { get; set; }
 
-
     }
 }

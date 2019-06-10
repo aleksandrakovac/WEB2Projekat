@@ -8,9 +8,16 @@ namespace WebApp.Models
     public class Pricelist
     {
         public int Id { get; set; }
-        public int StationId { get; set; }
-        public int Number { get; set; }
-        public List<Station> Stations { get; set; }
-        public List<Timetable> Timetables { get; set; }
+        public DateTime From { get; set; }
+        public DateTime To { get; set; }
+
+        public List<TicketPrice> TicketPrices { get; set; }
+
+        public Pricelist(int i, DateTime f, DateTime t)
+        {
+            Id = i;
+            From = f;
+            To = t;
+        }
     }
 }

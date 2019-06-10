@@ -84,8 +84,6 @@ namespace WebApp.Controllers
                 return BadRequest();
             }
 
-
-
             try
             {
                 unitOfWork.TimetableRepository.Update(timetable);

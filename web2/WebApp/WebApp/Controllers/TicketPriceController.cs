@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -18,6 +20,7 @@ namespace WebApp.Controllers
     public class TicketPriceController : ApiController
     {
         private IUnitOfWork unitOfWork;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public TicketPriceController(IUnitOfWork unitOfWork)
         {
@@ -47,6 +50,59 @@ namespace WebApp.Controllers
             }
 
             return Ok(cena);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [AllowAnonymous]
+        [ResponseType(typeof(string))]
+        [Route("GetKartaKupi2/{tipKarte}/{tipKorisnika}/{user}")]
+        public IHttpActionResult GetKarta(string tipKarte, string tipKorisnika, string user)
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            var id = User.Identity.GetUserId();
+            ApplicationUser u = userManager.FindById(user);
+
+            List<TicketPrice> karte = unitOfWork.PriceOfTicketRepository.GetAll().ToList();
+            TicketPrice price = new TicketPrice();
+            double cena = 0;
+            string retVal = "";
+            foreach (TicketPrice k in karte)
+            {
+                k.TypeTicket = unitOfWork.TypeTicketRepository.Get(k.TypeTicketId);
+                if (k.TypeTicket.Type == tipKarte)
+                {
+                    price = unitOfWork.PriceOfTicketRepository.Get(k.Id);
+                    if (tipKorisnika == "student")
+                        cena = price.Price * 0.8;
+                    if (tipKorisnika == "penzioner")
+                        cena = price.Price * 0.5;
+                    else
+                        cena = price.Price;
+
+                    Ticket t = new Ticket();
+                    t.CenaKarte = k;
+                    t.PriceOfTicketId = k.Id;
+                    t.Tip = k.TypeTicket.Type;
+                    t.ApplicationUserId = u.Id;
+                    t.ApplicationUser = u;
+                    t.VaziDo = DateTime.UtcNow;                    
+                    u.Tickets.Add(t);
+
+                    //t.PriceOfTicket = price;
+                    //u.Tickets.Add(k);
+                }
+
+                retVal += "Uspesno ste kupili " + tipKarte + ", po ceni od : " + cena.ToString() + " din";
+            }
+
+            if (karte == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(retVal);
         }
 
         // GET: api/PriceOfTickets

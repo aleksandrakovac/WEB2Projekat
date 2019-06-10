@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Web;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Web.Mvc;
 using WebApp.Models;
+using WebApp.Persistence;
 using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
@@ -23,8 +25,12 @@ namespace WebApp.Controllers
 
 
         // GET: api/Lines
+        [AllowAnonymous]
+        [ResponseType(typeof(List<Line>))]
+        [Route("GetLinije")]
         public IEnumerable<Line> GetLines()
         {
+            List<Line> linije = unitOfWork.LineRepository.GetAll().ToList();
             return unitOfWork.LineRepository.GetAll();
         }
 
@@ -54,8 +60,6 @@ namespace WebApp.Controllers
             {
                 return BadRequest();
             }
-
-
 
             try
             {

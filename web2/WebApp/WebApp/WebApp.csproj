@@ -255,7 +255,7 @@
     <Compile Include="Controllers\LinesController.cs" />
     <Compile Include="Controllers\PricelistsController.cs" />
     <Compile Include="Controllers\StationsController.cs" />
-    <Compile Include="Controllers\TicketsOfPriceController.cs" />
+    <Compile Include="Controllers\TicketPriceController.cs" />
     <Compile Include="Controllers\TimetablesController.cs" />
     <Compile Include="Controllers\TypeTicketsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -277,6 +277,7 @@
     <Compile Include="Models\Day.cs" />
     <Compile Include="Models\Line.cs" />
     <Compile Include="Models\Pricelist.cs" />
+    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketPrice.cs" />
     <Compile Include="Models\Station.cs" />
     <Compile Include="Models\Timetable.cs" />

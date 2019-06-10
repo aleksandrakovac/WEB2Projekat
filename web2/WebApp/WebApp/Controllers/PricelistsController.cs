@@ -54,8 +54,6 @@ namespace WebApp.Controllers
                 return BadRequest();
             }
 
-
-
             try
             {
                 unitOfWork.PricelistRepository.Update(pricelist);

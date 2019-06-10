@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -14,21 +15,29 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using WebApp.Models;
+using WebApp.Persistence;
+using WebApp.Persistence.UnitOfWork;
 using WebApp.Providers;
 using WebApp.Results;
 
 namespace WebApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-        public AccountController()
+        private IUnitOfWork unitOfWork;
+
+        public AccountController(IUnitOfWork unitOfWork)
         {
+            this.unitOfWork = unitOfWork;
         }
+
+        public AccountController() { }
 
         public AccountController(ApplicationUserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
@@ -316,6 +325,27 @@ namespace WebApp.Controllers
             }
 
             return logins;
+        }
+
+        [AllowAnonymous]
+        [ResponseType(typeof(string))]
+        [Route("GetTipKorisnika/{user}")]
+        public IHttpActionResult GetTip(string user)
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            var id = User.Identity.GetUserId();
+            ApplicationUser u = userManager.FindById(user);
+
+            string retVal = "registrovan";
+
+            if(u == null)
+            {
+                retVal = "neregistrovan";
+            }
+
+            return Ok(retVal);
         }
 
         // POST api/Account/Register

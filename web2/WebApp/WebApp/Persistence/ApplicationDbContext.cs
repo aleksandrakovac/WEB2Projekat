@@ -18,9 +18,12 @@ namespace WebApp.Persistence
         public DbSet<Station> Station { get; set; }
         public DbSet<Timetable> Timetable { get; set; }
         public DbSet<TypeTicket> TypeTicket { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<TimetableType> TimetableType { get; set; }
+
 
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("name=DefaultConnection", throwIfV1Schema: false)
         {
         }
         
