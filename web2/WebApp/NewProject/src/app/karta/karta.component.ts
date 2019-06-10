@@ -9,13 +9,33 @@ import { AuthHttpService } from '../services/http/auth.service';
 export class KartaComponent implements OnInit {
 
   constructor(private http: AuthHttpService) { }
-  tipovi: string[] = ["Dnevna", "Mjeseca", "Godisnja", "Vremenska"];
+  tipovi: string[] = ["Dnevna", "Mjesecna", "Godisnja", "Vremenska"];
   tip: string;
   cijena1: number;
-  vaziDo1: string
+  vaziDo1: string;
   user: string;
+  korisnik:string;
 
   ngOnInit() {
+
+    let jwtData = localStorage.jwt.split('.')[1]
+        //let decodedJwtJsonData = window.atob(jwtData)
+        //let decodedJwtData = JSON.parse(decodedJwtJsonData)
+        //this.user = decodedJwtData.nameid;
+        if(jwtData == undefined)
+        {
+          this.user = "neregistrovan";
+        }
+        else
+        {
+          let decodedJwtJsonData = window.atob(jwtData)
+        let decodedJwtData = JSON.parse(decodedJwtJsonData)
+        this.user = decodedJwtData.nameid;
+        }
+        this.http.GetTipKorisnika(this.user).subscribe((korisnik)=>{
+          this.korisnik = korisnik;
+          err => console.log(err);
+        });
   }
 
   CijenaKarte(){
