@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Observable } from 'rxjs';
 import { User } from 'src/app/folder/osoba';
 
@@ -9,6 +8,7 @@ import { User } from 'src/app/folder/osoba';
 export class AuthHttpService{
 
         base_url = "http://localhost:52295"
+        user:string;
 
         constructor(private http: HttpClient){
 
@@ -25,8 +25,21 @@ export class AuthHttpService{
             this.http.post<any>(this.base_url + "/oauth/token",data, httpOptions )
             .subscribe(data => {
                 localStorage.jwt = data.access_token;
+                let jwtData = localStorage.jwt.split('.')[1]
+                let decodedJwtJsonData = window.atob(jwtData)
+                let decodedJwtData = JSON.parse(decodedJwtJsonData) 
+
+                let role = decodedJwtData.role
+                this.user = decodedJwtData.unique_name;
             });
+            
+
         }
+
+        logIn2(username: string, password: string){
+
+            this.http.get<any>(this.base_url + "/api/Account/GetTipKorisnika/" + username).subscribe();
+       }
 
         registration(data:User)
         {
@@ -41,4 +54,18 @@ export class AuthHttpService{
            
             return this.http.get<any>(this.base_url + "/api/TicketPrice/GetKartaKupi2/" + tipKarte + "/" + tipKorisnika + "/" + user);
         }
+
+        GetAllLines() : Observable<any>{
+            return Observable.create((observer) => {
+                this.http.get<any>(this.base_url + "/api/Lines/GetLinije").subscribe(data =>{
+                    observer.next(data);
+                    observer.complete();
+                }) 
+            });
+        }
+        GetTipKorisnika(user : string): Observable<any>{
+           
+            return this.http.get<any>(this.base_url + "/api/Account/GetTipKorisnika/" + user);
+        }
+
 }
