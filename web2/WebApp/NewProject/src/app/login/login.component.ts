@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-  constructor(private http: AuthHttpService) { }
+  constructor(private http: AuthHttpService, public router: Router) { }
 
   ngOnInit() {
   }
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     if(l){
       console.log("prijavljen");
     }
+    //window.location.reload();
   }
 
 }

@@ -8,36 +8,36 @@
       <br>
       
       <div class="row" id="formContent">
-          <form [formGroup] = "registacijaForm" (ngSubmit)="register()">
+          <form [formGroup] = "registacijaForm" (ngSubmit)="edit()">
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                   <div class="form-group">
                       <label class="control-label required" for="name">First Name<sup style="color:rgb(219, 73, 109)">*</sup></label>
-                      <input id="firstName" name="firstName" formControlName="firstName" type="text" class="form-control" placeholder="Enter Your First Name" required>
+                      <input id="firstName" value="[firstName]" name="firstName" formControlName="firstName" type="text" class="form-control" placeholder="Enter Your First Name" required>
                   </div>
               </div>
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                 <div class="form-group">
                     <label class="control-label required" for="name">Last Name<sup style="color:rgb(219, 73, 109)">*</sup></label>
-                    <input id="lastName" name="lastName" formControlName="lastName" type="text" class="form-control" placeholder="Enter Your Last Name">
+                    <input id="lastName" name="lastName" value="[lastName]" formControlName="lastName" type="text" class="form-control" placeholder="Enter Your Last Name">
                 </div>
             </div>
 
             <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
               <div class="form-group">
                   <label class="control-label required" for="name">Username<sup style="color:rgb(219, 73, 109)">*</sup></label>
-                  <input id="username" name="username" formControlName="username" type="text" class="form-control" placeholder="Enter Your Username">
+                  <input id="username" [readonly]="true" name="username" formControlName="username" type="text" class="form-control" placeholder="Enter Your Username">
               </div>
           </div>
               
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                   <div class="form-group">
                       <label class="control-label required" for="email">Email<sup style="color:rgb(219, 73, 109)">*</sup></label>
-                      <input id="email" name="email" formControlName="email" type="text" class="form-control" placeholder="Enter Email Address">
+                      <input id="email" name="email" value="[email]" formControlName="email" type="text" class="form-control" placeholder="Enter Email Address">
                   </div>
               </div>
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                   <div class="form-group">
-                      <label class="control-label required" for="password">Password<sup style="color:rgb(219, 73, 109)">*</sup></label>
+                      <label class="control-label required" value="[password]" for="password">Password<sup style="color:rgb(219, 73, 109)">*</sup></label>
                       <input id="password" name="password" formControlName="password" type="password" class="form-control" placeholder="password">
                   </div>
                   <div class="mb30">
@@ -47,7 +47,7 @@
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                 <div class="form-group">
                     <label class="control-label required" for="password">Confirm Password<sup style="color:rgb(219, 73, 109)">*</sup></label>
-                    <input id="confirmPassword" formControlName="confirmPassword" name="confirmPassword" type="password" class="form-control" placeholder="Confirm Password">
+                    <input id="confirmPassword" value="[confirmPassword]" formControlName="confirmPassword" name="confirmPassword" type="password" class="form-control" placeholder="Confirm Password">
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
@@ -56,6 +56,7 @@
                   <input id="date" name="date" type="date" formControlName="date" class="form-control" placeholder="Date">
               </div>
           </div>
+
           <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label class="control-label required" for="date">Type of user:</label>
@@ -66,8 +67,9 @@
                 </select>    
               </div>
         </div>
+
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
-                  <button type="submit" class="btn btn-primary btn-block">Register</button>
+                  <button type="submit" class="btn btn-primary btn-block">Izmeni</button>
               </div>
           </form>
       </div>

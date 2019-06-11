@@ -16,6 +16,7 @@ using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
 {
+    //[Authorize]
     [RoutePrefix("api/TicketPrice")]
     public class TicketPriceController : ApiController
     {
@@ -52,7 +53,7 @@ namespace WebApp.Controllers
             return Ok(cena);
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [AllowAnonymous]
         [ResponseType(typeof(string))]
         [Route("GetKartaKupi2/{tipKarte}/{tipKorisnika}/{user}")]
@@ -62,7 +63,13 @@ namespace WebApp.Controllers
             var userManager = new UserManager<ApplicationUser>(userStore);
 
             var id = User.Identity.GetUserId();
-            ApplicationUser u = userManager.FindById(user);
+            ApplicationUser u = new ApplicationUser();
+            if (user != "")
+            {
+                u = userManager.FindById(user);
+            }
+
+
 
             List<TicketPrice> karte = unitOfWork.PriceOfTicketRepository.GetAll().ToList();
             TicketPrice price = new TicketPrice();
@@ -76,7 +83,7 @@ namespace WebApp.Controllers
                     price = unitOfWork.PriceOfTicketRepository.Get(k.Id);
                     if (tipKorisnika == "student")
                         cena = price.Price * 0.8;
-                    if (tipKorisnika == "penzioner")
+                    else if (tipKorisnika == "penzioner")
                         cena = price.Price * 0.5;
                     else
                         cena = price.Price;
@@ -85,18 +92,30 @@ namespace WebApp.Controllers
                     t.CenaKarte = k;
                     t.PriceOfTicketId = k.Id;
                     t.Tip = k.TypeTicket.Type;
-                    t.ApplicationUserId = u.Id;
-                    t.ApplicationUser = u;
-                    t.VaziDo = DateTime.UtcNow;                    
-                    u.Tickets.Add(t);
+                    if (u == null)
+                    {
+                        t.VaziDo = DateTime.UtcNow;
+                        unitOfWork.TicketRepository.Add(t);
+                        unitOfWork.Complete();
+                    }
+                    else
+                    {
+                        t.ApplicationUserId = u.Id;
+                        t.ApplicationUser = u;
+                        t.VaziDo = DateTime.UtcNow;
+                        u.Tickets.Add(t);
+                        unitOfWork.TicketRepository.Add(t);
+                        unitOfWork.Complete();
+                    }
+
 
                     //t.PriceOfTicket = price;
                     //u.Tickets.Add(k);
                 }
 
-                retVal += "Uspesno ste kupili " + tipKarte + ", po ceni od : " + cena.ToString() + " din";
-            }
 
+            }
+            retVal += "Uspesno ste kupili " + tipKarte + ", po ceni od : " + cena.ToString() + " din";
             if (karte == null)
             {
                 return NotFound();

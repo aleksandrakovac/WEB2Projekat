@@ -20,6 +20,7 @@ import { CjenovnikComponent } from './cjenovnik/cjenovnik.component';
 import { KartaComponent } from './karta/karta.component';
 import { LinijeComponent } from './linije/linije.component';
 import { RedVoznjeHttpService } from './services/redvoznje.service';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes : Routes = [
   {path:"home", component: HomeComponent},
@@ -29,6 +30,9 @@ const routes : Routes = [
   {path:"redvoznje", component: RedvoznjeComponent},
   {path:"cjenovnik", component: CjenovnikComponent},
   {path:"karta", component: KartaComponent},
+  {path:"profil", component: ProfileComponent},
+  {path:"provera", component: KartaComponent},
+  {path:"izmeniLiniju", component: KartaComponent},
 
   
 
@@ -46,7 +50,8 @@ const routes : Routes = [
     RedvoznjeComponent,
     CjenovnikComponent,
     KartaComponent,
-    LinijeComponent
+    LinijeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

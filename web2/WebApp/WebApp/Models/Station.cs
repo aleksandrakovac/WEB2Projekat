@@ -24,5 +24,7 @@ namespace WebApp.Models
             X = xx;
             Y = yy;
         }
+        public Station()
+        { }
     }
 }

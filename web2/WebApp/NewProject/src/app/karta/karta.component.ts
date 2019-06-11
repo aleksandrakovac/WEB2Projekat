@@ -47,11 +47,14 @@ export class KartaComponent implements OnInit {
   }
 
   KupiKartu(){
+    if(localStorage.jwt != "undefined")
+    {
     let jwtData = localStorage.jwt.split('.')[1]
       let decodedJwtJsonData = window.atob(jwtData)
       let decodedJwtData = JSON.parse(decodedJwtJsonData)
   
       this.user = decodedJwtData.nameid;
+    }
     this.http.GetKupiKartu(this.tip, "student", this.user).subscribe((vaziDo) =>
     {
       this.vaziDo1 = vaziDo;
@@ -59,9 +62,5 @@ export class KartaComponent implements OnInit {
     });
   }
 
-  selected(tip: string)
-  {
-    this.tip = tip;
-  }
 
 }

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegistracijaComponent implements OnInit {
 
+  korisnici: string[] = ["student", "penzioner", "regularni putnik"]
   registacijaForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
@@ -18,7 +19,8 @@ export class RegistracijaComponent implements OnInit {
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required],
     email: ['', Validators.required],
-    date: ['', Validators.required]
+    date: ['', Validators.required],
+    tip: ['', Validators.required]
   });
 
   constructor(private http: AuthHttpService, private fb: FormBuilder, private router: Router) { }
