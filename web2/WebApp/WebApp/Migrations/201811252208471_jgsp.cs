@@ -25,17 +25,14 @@ namespace WebApp.Migrations
                         LineId = c.Int(nullable: false),
                         DayId = c.Int(nullable: false),
                         TimetableTypeId = c.Int(nullable: false),
-                        Pricelist_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Days", t => t.DayId, cascadeDelete: true)
                 .ForeignKey("dbo.Lines", t => t.LineId, cascadeDelete: true)
                 .ForeignKey("dbo.TimetableTypes", t => t.TimetableTypeId, cascadeDelete: true)
-                .ForeignKey("dbo.Pricelists", t => t.Pricelist_Id)
                 .Index(t => t.LineId)
                 .Index(t => t.DayId)
-                .Index(t => t.TimetableTypeId)
-                .Index(t => t.Pricelist_Id);
+                .Index(t => t.TimetableTypeId);
             
             CreateTable(
                 "dbo.Lines",
@@ -57,11 +54,8 @@ namespace WebApp.Migrations
                         X = c.Single(nullable: false),
                         Y = c.Single(nullable: false),
                         LineId = c.Int(nullable: false),
-                        Pricelist_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Pricelists", t => t.Pricelist_Id)
-                .Index(t => t.Pricelist_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.TimetableTypes",
@@ -77,8 +71,8 @@ namespace WebApp.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        StationId = c.Int(nullable: false),
-                        Number = c.Int(nullable: false),
+                        From = c.DateTime(nullable: false),
+                        To = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -96,6 +90,24 @@ namespace WebApp.Migrations
                 .ForeignKey("dbo.TypeTickets", t => t.TypeTicketId, cascadeDelete: true)
                 .Index(t => t.PricelistId)
                 .Index(t => t.TypeTicketId);
+            
+            CreateTable(
+                "dbo.Tickets",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Checked = c.Boolean(nullable: false),
+                        Tip = c.String(),
+                        VaziDo = c.DateTime(nullable: false),
+                        ApplicationUserId = c.String(maxLength: 128),
+                        PriceOfTicketId = c.Int(nullable: false),
+                        CenaKarte_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUserId)
+                .ForeignKey("dbo.TicketPrices", t => t.CenaKarte_Id)
+                .Index(t => t.ApplicationUserId)
+                .Index(t => t.CenaKarte_Id);
             
             CreateTable(
                 "dbo.TypeTickets",
@@ -130,9 +142,9 @@ namespace WebApp.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.TicketPrices", "TypeTicketId", "dbo.TypeTickets");
+            DropForeignKey("dbo.Tickets", "CenaKarte_Id", "dbo.TicketPrices");
+            DropForeignKey("dbo.Tickets", "ApplicationUserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.TicketPrices", "PricelistId", "dbo.Pricelists");
-            DropForeignKey("dbo.Timetables", "Pricelist_Id", "dbo.Pricelists");
-            DropForeignKey("dbo.Stations", "Pricelist_Id", "dbo.Pricelists");
             DropForeignKey("dbo.Timetables", "TimetableTypeId", "dbo.TimetableTypes");
             DropForeignKey("dbo.Timetables", "LineId", "dbo.Lines");
             DropForeignKey("dbo.StationLines", "Line_Id", "dbo.Lines");
@@ -140,10 +152,10 @@ namespace WebApp.Migrations
             DropForeignKey("dbo.Timetables", "DayId", "dbo.Days");
             DropIndex("dbo.StationLines", new[] { "Line_Id" });
             DropIndex("dbo.StationLines", new[] { "Station_Id" });
+            DropIndex("dbo.Tickets", new[] { "CenaKarte_Id" });
+            DropIndex("dbo.Tickets", new[] { "ApplicationUserId" });
             DropIndex("dbo.TicketPrices", new[] { "TypeTicketId" });
             DropIndex("dbo.TicketPrices", new[] { "PricelistId" });
-            DropIndex("dbo.Stations", new[] { "Pricelist_Id" });
-            DropIndex("dbo.Timetables", new[] { "Pricelist_Id" });
             DropIndex("dbo.Timetables", new[] { "TimetableTypeId" });
             DropIndex("dbo.Timetables", new[] { "DayId" });
             DropIndex("dbo.Timetables", new[] { "LineId" });
@@ -155,6 +167,7 @@ namespace WebApp.Migrations
             DropColumn("dbo.AspNetUsers", "Tip");
             DropTable("dbo.StationLines");
             DropTable("dbo.TypeTickets");
+            DropTable("dbo.Tickets");
             DropTable("dbo.TicketPrices");
             DropTable("dbo.Pricelists");
             DropTable("dbo.TimetableTypes");

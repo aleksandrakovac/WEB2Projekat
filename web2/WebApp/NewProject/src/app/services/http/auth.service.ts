@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { logging } from 'protractor';
 import { User } from 'src/app/folder/osoba';
 
 
@@ -8,7 +9,7 @@ import { User } from 'src/app/folder/osoba';
 export class AuthHttpService{
 
         base_url = "http://localhost:52295"
-        user:string;
+        //user:string;
 
         constructor(private http: HttpClient){
 
@@ -19,27 +20,31 @@ export class AuthHttpService{
             let data = `username=${username}&password=${password}&grant_type=password`;
             let httpOptions = {
                 headers:{
-                    "Content-type": "application/x-www-form-urlencoded"
+                    
+                    "content-type": "application/x-www-form-urlencoded",
+
+                
+
                 }
             }
             this.http.post<any>(this.base_url + "/oauth/token",data, httpOptions )
             .subscribe(data => {
                 localStorage.jwt = data.access_token;
-                let jwtData = localStorage.jwt.split('.')[1]
-                let decodedJwtJsonData = window.atob(jwtData)
-                let decodedJwtData = JSON.parse(decodedJwtJsonData) 
+                //let jwtData = localStorage.jwt.split('.')[1]
+                //let decodedJwtJsonData = window.atob(jwtData)
+                //let decodedJwtData = JSON.parse(decodedJwtJsonData) 
 
-                let role = decodedJwtData.role
-                this.user = decodedJwtData.unique_name;
+                //let role = decodedJwtData.role
+                //this.user = decodedJwtData.unique_name;
             });
             
 
         }
 
-        logIn2(username: string, password: string){
+       /* logIn2(username: string, password: string){
 
             this.http.get<any>(this.base_url + "/api/Account/GetTipKorisnika/" + username).subscribe();
-       }
+       }*/
 
         registration(data:User)
         {

@@ -15,10 +15,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(user:User,form: NgForm){
+  logIn(user:User,form: NgForm){
     this.http.logIn(user.username, user.password);
-    this.http.logIn2(user.username,user.password);
-    form.reset();
+    //this.http.logIn2(user.username,user.password);
+    //form.reset();
+    console.log("prijavljen");
   }
 
 }

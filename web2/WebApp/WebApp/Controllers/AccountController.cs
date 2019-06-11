@@ -330,7 +330,7 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         [ResponseType(typeof(string))]
         [Route("GetTipKorisnika/{user}")]
-        public IHttpActionResult GetTip(string user)
+        public IHttpActionResult GetTipKorisnika(string user)
         {
             var userStore = new UserStore<ApplicationUser>(db);
             var userManager = new UserManager<ApplicationUser>(userStore);
