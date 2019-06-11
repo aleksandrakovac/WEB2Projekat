@@ -30,18 +30,18 @@
           <form>
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                   <div class="form-group">
-                    <label class="control-label" >Tip karte(za registrovane) </label>
-                    <select class="control-label" [(ngModel)]="tip" *ngIf = "(korisnik == 'registrovan')" >
-                            <option *ngFor="let t of tipovi">
-                              {{t}} 
-                            </option>
-                        </select> 
+                    <!--<label class="control-label" >Tip karte(za registrovane) </label>-->
+                    <select id = "tip" #id = "ngModel" name="tip" class="control-label" [(ngModel)]="tip" >
+                      <option *ngFor="let t of tipovi">
+                        {{t}} 
+                      </option>
+                  </select>
                       
                       
                   </div>
               </div>
 
-              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+       <!--       <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                     <div class="form-group">
                       <label class="control-label" >Tip karte(za neregistrovane) </label>
                       <select class="control-label" [(ngModel)]="tip" *ngIf = "(korisnik == 'neregistrovan')" >
@@ -51,12 +51,12 @@
                         </select> 
                         
                     </div>
-                </div>
+                </div> -->
 
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                     <div class="form-group">
                   
-                            <button (click)="CenaKarte()" class="btn btn-primary btn-block">Prikazi cenu ove karte</button>
+                            <button (click)="CijenaKarte()" class="btn btn-primary btn-block">Prikazi cenu ove karte</button>
                      
                     </div>
                  </div>

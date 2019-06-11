@@ -19,5 +19,7 @@ namespace WebApp.Models
             From = f;
             To = t;
         }
+        public Pricelist()
+        { }
     }
 }

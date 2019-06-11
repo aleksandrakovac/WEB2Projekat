@@ -9,13 +9,45 @@ import { User } from 'src/app/folder/osoba';
 export class AuthHttpService{
 
         base_url = "http://localhost:52295"
-        //user:string;
+        user:string;
 
         constructor(private http: HttpClient){
 
         }
 
-        logIn(username: string, password: string){
+        logIn(username: string, password: string): Observable<boolean> | boolean{
+            let isDone: boolean = false;
+            let data = `username=${username}&password=${password}&grant_type=password`;
+            let httpOptions = {
+                headers: {
+                    "Content-type": "application/x-www-form-urlencoded"
+                }
+            }
+    
+            this.http.post<any>(this.base_url + "/oauth/token", data, httpOptions).subscribe(data => {
+                localStorage.jwt = data.access_token;
+                let jwtData = localStorage.jwt.split('.')[1]
+                let decodedJwtJsonData = window.atob(jwtData)
+                let decodedJwtData = JSON.parse(decodedJwtJsonData)
+    
+      
+                let role = decodedJwtData.role
+                this.user = decodedJwtData.unique_name;
+            });
+    
+            if(localStorage.jwt != "undefined"){
+                isDone = true;
+            }
+            else{
+                isDone = false;
+            }
+    
+            return isDone;
+            
+        }
+    
+
+        /*logIn(username: string, password: string){
 
             let data = `username=${username}&password=${password}&grant_type=password`;
             let httpOptions = {
@@ -39,12 +71,12 @@ export class AuthHttpService{
             });
             
 
-        }
+        }*/
 
        /* logIn2(username: string, password: string){
 
             this.http.get<any>(this.base_url + "/api/Account/GetTipKorisnika/" + username).subscribe();
-       }*/
+       }*/  
 
         registration(data:User)
         {

@@ -25,6 +25,7 @@ export class KartaComponent implements OnInit {
         if(jwtData == undefined)
         {
           this.user = "neregistrovan";
+          
         }
         else
         {
@@ -56,6 +57,11 @@ export class KartaComponent implements OnInit {
       this.vaziDo1 = vaziDo;
       err => console.log(err);
     });
+  }
+
+  selected(tip: string)
+  {
+    this.tip = tip;
   }
 
 }
