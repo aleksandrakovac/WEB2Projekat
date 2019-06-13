@@ -122,14 +122,23 @@ namespace WebApp.Controllers
         public IHttpActionResult GetKartaCena(string tip)
         {
             List<TypeTicket> karte = unitOfWork.TypeTicketRepository.GetAll().ToList();
-            TicketPrice price = new TicketPrice();
+            List<TicketPrice> price = new List<TicketPrice>();
             float cena = 0;
             foreach (TypeTicket k in karte)
             {
                 if (tip == k.Type)
                 {
-                    price = unitOfWork.PriceOfTicketRepository.Get(k.Id);
-                    cena = price.Price;
+
+                    price = unitOfWork.PriceOfTicketRepository.GetAll().ToList();
+                    foreach(TicketPrice p in price)
+                    {
+                        if (p.TypeTicketId == k.Id)
+                        {
+                            cena = p.Price;
+                        }
+
+                    }
+                    
                 }
             }
 
@@ -162,6 +171,7 @@ namespace WebApp.Controllers
             List<TicketPrice> karte = unitOfWork.PriceOfTicketRepository.GetAll().ToList();
             TicketPrice price = new TicketPrice();
             double cena = 0;
+            DateTime trajanje= DateTime.Now;
             string retVal = "";
             foreach (TicketPrice k in karte)
             {
@@ -182,6 +192,11 @@ namespace WebApp.Controllers
                     t.Tip = k.TypeTicket.Type;
                     if (u == null)
                     {
+                        if(tipKarte == "Vremenska")
+                        {
+                            t.VaziDo = DateTime.UtcNow.AddHours(1);
+                            trajanje = t.VaziDo;
+                        }
                         t.VaziDo = DateTime.UtcNow;
                         unitOfWork.TicketRepository.Add(t);
                         unitOfWork.Complete();
@@ -203,7 +218,11 @@ namespace WebApp.Controllers
 
 
             }
-            retVal += "Uspesno ste kupili " + tipKarte + ", po ceni od : " + cena.ToString() + " din";
+            retVal += "Uspesno ste kupili '" + tipKarte + "karta', po ceni od : " + cena.ToString() + " din.\n";
+            if(tipKarte == "Vremenska")
+            {
+                retVal += "Vremenska karta traje do" + trajanje.ToString();
+            }
             if (karte == null)
             {
                 return NotFound();

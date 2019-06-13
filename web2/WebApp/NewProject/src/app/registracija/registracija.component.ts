@@ -41,8 +41,9 @@ export class RegistracijaComponent implements OnInit {
     }
     this.http.registration(regModel);
     //form.reset();*/
+    //this.router.navigate(["/profile"]);
   }
-/*
+  /*
   UploadFile(event) {
     this.selectedFile = <File>event.target.files[0];
   }*/

@@ -5,42 +5,8 @@
 
        <!--forms-->
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<!--
- <nav>
-    <div> 
-    <label>Odaberite red voznje:</label>
-    <select ngDefaultControl id="tip"  fromControlName="tip" name="tip" [(ngModel)]="tip">
-    <option *ngFor="let t of tipovi">
-    {{t}}
-    </option> 
-    </select>
-    
-    <div>
-      <div *ngIf = "(tip == 'Gradski')">
-        <dl>
-          <dt ngDefaultControl *ngFor = "let l of lines">
-            <ng-template [ngIf]="l.Number <= 20">
-              <label>{{l.Number}} {{l.Direction}}</label>
-            </ng-template>
-          </dt>
-        </dl>
-      </div>
-    </div>
-    
-    <div>
-    <div *ngIf = "(tip == 'Prigradski')">
-    <dl>
-    <dt ngDefaultControl *ngFor = "let l of lines">
-    <ng-template [ngIf]="l.Number > 20">
-    <label>{{l.Number}} {{l.Direction}}</label>
-    </ng-template>
-    </dt>
-    </dl>
-    </div>
-    </div>
-    </div> 
-    </nav>-->
-    <nav>
+
+
  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <div class="account-holder">
         <div class="row">
@@ -84,4 +50,3 @@
         </div> 
     </div>
   </div>
-</nav>

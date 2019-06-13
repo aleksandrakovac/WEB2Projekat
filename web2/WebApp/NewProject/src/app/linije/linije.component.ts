@@ -17,13 +17,10 @@ export class LinijeComponent implements OnInit {
   line: Line;
   lineNumber: number;
   tip: string;
-  tipovi: string[] = ["Gradski", "Prigradski"];
   timetableInfo:TimetableInfo = new TimetableInfo();
   selectedTimetableType: TimetableType = new TimetableType();
-  selectedDay: Day = new Day();
-  selectedLine: Line = new Line();
-  filteredLines: Line[] = [];
-  timetable: Timetable = new Timetable();
+  //selectedLine: Line = new Line();
+  //timetable: Timetable = new Timetable();
   
   constructor(private http:AuthHttpService, private http2:RedVoznjeHttpService) { }
 

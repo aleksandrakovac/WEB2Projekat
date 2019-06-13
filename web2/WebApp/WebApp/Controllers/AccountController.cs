@@ -357,14 +357,17 @@ namespace WebApp.Controllers
         {
             var userStore = new UserStore<ApplicationUser>(db);
             var userManager = new UserManager<ApplicationUser>(userStore);
-
+            var retVal = "AppUser";
             var id = User.Identity.GetUserId();
             ApplicationUser u = userManager.FindById(user);
 
-            var retVal = u.Tip;
-
-            
-
+            if(u == null)
+            {
+                retVal = "neregistrovan";
+            }
+            else
+                retVal = u.Tip;
+          
             return Ok(retVal);
         }
 
