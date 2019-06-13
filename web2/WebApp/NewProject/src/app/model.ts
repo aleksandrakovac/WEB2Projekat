@@ -5,6 +5,7 @@ export class Day{
 export class Line{
     Id : number
     Number : number
+    Direction : string
 }
 
 export class Pricelist{

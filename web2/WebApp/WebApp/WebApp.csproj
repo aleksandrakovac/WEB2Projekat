@@ -263,9 +263,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911252250241_jgsp.cs" />
-    <Compile Include="Migrations\201911252250241_jgsp.Designer.cs">
-      <DependentUpon>201911252250241_jgsp.cs</DependentUpon>
+    <Compile Include="Migrations\201911252203226_jgsp.cs" />
+    <Compile Include="Migrations\201911252203226_jgsp.Designer.cs">
+      <DependentUpon>201911252203226_jgsp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201905222056072_InitialMigration.cs" />
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
@@ -415,8 +415,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911252250241_jgsp.resx">
-      <DependentUpon>201911252250241_jgsp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911252203226_jgsp.resx">
+      <DependentUpon>201911252203226_jgsp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>

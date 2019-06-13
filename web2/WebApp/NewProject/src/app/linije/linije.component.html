@@ -5,47 +5,83 @@
 
        <!--forms-->
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
- 
-
+<!--
+ <nav>
+    <div> 
+    <label>Odaberite red voznje:</label>
+    <select ngDefaultControl id="tip"  fromControlName="tip" name="tip" [(ngModel)]="tip">
+    <option *ngFor="let t of tipovi">
+    {{t}}
+    </option> 
+    </select>
+    
+    <div>
+      <div *ngIf = "(tip == 'Gradski')">
+        <dl>
+          <dt ngDefaultControl *ngFor = "let l of lines">
+            <ng-template [ngIf]="l.Number <= 20">
+              <label>{{l.Number}} {{l.Direction}}</label>
+            </ng-template>
+          </dt>
+        </dl>
+      </div>
+    </div>
+    
+    <div>
+    <div *ngIf = "(tip == 'Prigradski')">
+    <dl>
+    <dt ngDefaultControl *ngFor = "let l of lines">
+    <ng-template [ngIf]="l.Number > 20">
+    <label>{{l.Number}} {{l.Direction}}</label>
+    </ng-template>
+    </dt>
+    </dl>
+    </div>
+    </div>
+    </div> 
+    </nav>-->
+    <nav>
  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <div class="account-holder">
         <div class="row">
-        <form>
+        <form id="rvform"  method="get">
           <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
             <div class="form-group">
-              <label>Odaberite red voznje:</label>
-              <select ngDefaultControl id="tip" fromControlName="tip" name="tip" [(ngModel)]="tip">
-                <option *ngFor="let t of tipovi">
-                  {{t}}
-                </option> 
+              <label class="control-label" >Izaberite tip reda voznje: </label>
+              <select [(ngModel)]="selectedTimetableType" name="selectedTimetableType">
+                <option *ngFor="let TimetableType of timetableInfo.TimetableTypes" [ngValue]="TimetableType">
+                  {{TimetableType.Name}}
+                </option>
               </select>
             </div>
           </div>
           <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
-            <div class="form-group" *ngIf = "(tip == 'Gradski')">
-              <dl>
-                <dt *ngFor = "let l of lines">
-                  <ng-template [ngIf]="l.Number <= 20">
-                    <label>{{l.Number}} {{l.Direction}}</label>
+            <div class="form-group" >
+              <label class="control-label" >Linije: </label>
+              <div ngDefaultControl *ngIf = "(selectedTimetableType.Name == 'Gradski')" >
+                <dl>
+                <dt *ngFor="let Line of timetableInfo.Lines" >
+                  <ng-template [ngIf]="Line.Number <= 20">
+                    <label>{{Line.Number}} {{Line.Direction}}</label>
                   </ng-template>
                 </dt>
               </dl>
-            </div>
-           </div>  
-           <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
-              <div class="form-group" *ngIf = "(tip == 'Prigradski')">
-                <dl>
-                  <dt *ngFor = "let l of lines">
-                    <ng-template [ngIf]="l.Number > 20">
-                      <label>{{l.Number}} {{l.Direction}}</label>
-                    </ng-template>
-                  </dt>
-                </dl>
               </div>
-             </div> 
+
+              <div ngDefaultControl *ngIf = "(selectedTimetableType.Name == 'Prigradski')">
+                <dl>
+                <dt ngDefaultControl *ngFor="let Line of timetableInfo.Lines" >
+                  <ng-template [ngIf]="Line.Number > 20">
+                    <label>{{Line.Number}} {{Line.Direction}}</label>
+                  </ng-template>
+                </dt>
+              </dl>
+              </div>
+
+            </div>
+          </div>    
             </form>
         </div> 
     </div>
   </div>
-
+</nav>

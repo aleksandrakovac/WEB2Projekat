@@ -41,6 +41,7 @@ namespace WebApp.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Number = c.Int(nullable: false),
                         StationId = c.Int(nullable: false),
+                        Direction = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
