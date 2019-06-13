@@ -90,14 +90,22 @@ namespace WebApp.Controllers
         public IHttpActionResult GetTicketPrice2(string tip, string tipKorisnika)
         {
             List<TypeTicket> karte = unitOfWork.TypeTicketRepository.GetAll().ToList();
-            TicketPrice price = new TicketPrice();
+            List<TicketPrice> price = new List<TicketPrice>();
             double cena = 0;
             foreach (TypeTicket k in karte)
             {
                 if (tip == k.Type)
                 {
-                    price = unitOfWork.PriceOfTicketRepository.Get(k.Id);
-                    cena = price.Price;
+                    price = unitOfWork.PriceOfTicketRepository.GetAll().ToList();
+                    foreach (TicketPrice p in price)
+                    {
+                        if (p.TypeTicketId == k.Id)
+                        {
+                            cena = p.Price;
+                        }
+                    }
+                    //price = unitOfWork.PriceOfTicketRepository.Get(k.Id);
+                    //cena = price.Price;
                     if (tipKorisnika == "student")
                         cena = cena * 0.8;
                     else if (tipKorisnika == "penzioner")
