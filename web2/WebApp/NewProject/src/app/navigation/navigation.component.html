@@ -6,36 +6,34 @@
 
                 <ul class="navbar-nav">
                   <li class="active">
-                    <a href="#" class="nav-link"routerLink="/linije">Linije </a>
-                </li>
-                <li class="nav-item">
+                      <a href="#" class="nav-link"routerLink="/linije">Linije </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="#" class="nav-link"routerLink="/redvoznje">Red voznje</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="#" class="nav-link"routerLink="/cenovnik">Cenovnik</a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link"routerLink="/karta">Kupi kartu</a>
-              </li>
-
-          
-          <li class="nav-item">
-            <a href="#" class="nav-link" [(ngModel)]="korisnik" *ngIf = "(korisnik == 'Admin')" routerLink="/izmeniLiniju">IzmenaLinije</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" [(ngModel)]="korisnik" *ngIf = "(korisnik == 'Controller')" routerLink="/provera">Proveri kartu</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link" [(ngModel)]="korisnik" *ngIf = "(korisnik == 'neregistrovan')" routerLink="/registracija">Registruj se</a>
-    </li>
-
-    <li class="nav-item">
-      <a href="#" class="nav-link" [(ngModel)]="korisnik" *ngIf = "(korisnik == 'neregistrovan')" routerLink="/login">Prijavi se</a>
-  </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link" [(ngModel)]="korisnik" *ngIf = "(korisnik == 'neregistrovan')" routerLink="/profil">Profil</a>
-  </li>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#" class="nav-link"routerLink="/cjenovnik">Cenovnik</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link"routerLink="/karta">Kupi kartu</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" ngDefaultControl [(ngModel)]="korisnik" *ngIf = "(korisnik == 'neregistrovan')" routerLink="/registracija">Registruj se</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" ngDefaultControl [(ngModel)]="korisnik" *ngIf = "(korisnik == 'neregistrovan')" routerLink="/login">Prijavi se</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" ngDefaultControl [(ngModel)]="korisnik" *ngIf = "(korisnik != 'neregistrovan')" routerLink="/profile">Profil</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#" class="nav-link" ngDefaultControl [(ngModel)]="korisnik" *ngIf = "(korisnik != 'neregistrovan')" routerLink="/odjava">Odjava</a>
+                    </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" ngDefaultControl [(ngModel)]="korisnik" *ngIf = "(korisnik == 'Admin')" routerLink="/editLine">Izmena linije</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" ngDefaultControl [(ngModel)]="korisnik" *ngIf = "(korisnik == 'Controller')" routerLink="/check">Proveri kartu</a>
+                  </li>
                 </ul>
-     
-        </nav>
+             </nav>

@@ -13,13 +13,13 @@ namespace WebApp.Models
 
         public List<TicketPrice> TicketPrices { get; set; }
 
-        public Pricelist(int i, DateTime f, DateTime t)
+        /*public Pricelist(int i, DateTime f, DateTime t)
         {
             Id = i;
             From = f;
             To = t;
         }
         public Pricelist()
-        { }
+        { }*/
     }
 }

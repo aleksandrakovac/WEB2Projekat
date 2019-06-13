@@ -29,6 +29,94 @@ namespace WebApp.Controllers
         }
 
         [AllowAnonymous]
+        [ResponseType(typeof(void))]
+        [Route("GetAddPricelist/{tip}/{cena}")]
+        public IHttpActionResult GetAddPricelist(string tip, int cena)
+        {
+            TicketPrice price = new TicketPrice();
+            price.Price = cena;
+            TypeTicket t = unitOfWork.TypeTicketRepository.Find(x => x.Type == tip).FirstOrDefault();
+            List<Pricelist> p = unitOfWork.PricelistRepository.GetAll().ToList();
+            price.Pricelist = p.FirstOrDefault();
+            price.TypeTicket = t;
+            unitOfWork.PriceOfTicketRepository.Add(price);
+            unitOfWork.Complete();
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [ResponseType(typeof(void))]
+        [Route("GetDeletePricelist/{id}")]
+        public IHttpActionResult GetDeletePricelist(int id)
+        {
+            TicketPrice pricelist = unitOfWork.PriceOfTicketRepository.Get(id);
+            if (pricelist == null)
+            {
+                return NotFound();
+            }
+
+            unitOfWork.PriceOfTicketRepository.Remove(pricelist);
+            unitOfWork.Complete();
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [ResponseType(typeof(void))]
+        [Route("GetChangePrice/{tip}/{cena}")]
+        public IHttpActionResult GetChangePrice(string tip, int cena)
+        {
+            List<TypeTicket> karte = unitOfWork.TypeTicketRepository.GetAll().ToList();
+            TicketPrice price = new TicketPrice();
+
+            foreach (TypeTicket k in karte)
+            {
+                if (tip == k.Type)
+                {
+                    price = unitOfWork.PriceOfTicketRepository.Get(k.Id);
+                    price.Price = cena;
+                    unitOfWork.PriceOfTicketRepository.Update(price);
+                    unitOfWork.Complete();
+
+
+
+                }
+            }
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [ResponseType(typeof(double))]
+        [Route("GetTicketPrice2/{tip}/{tipKorisnika}")]
+        public IHttpActionResult GetTicketPrice2(string tip, string tipKorisnika)
+        {
+            List<TypeTicket> karte = unitOfWork.TypeTicketRepository.GetAll().ToList();
+            TicketPrice price = new TicketPrice();
+            double cena = 0;
+            foreach (TypeTicket k in karte)
+            {
+                if (tip == k.Type)
+                {
+                    price = unitOfWork.PriceOfTicketRepository.Get(k.Id);
+                    cena = price.Price;
+                    if (tipKorisnika == "student")
+                        cena = cena * 0.8;
+                    else if (tipKorisnika == "penzioner")
+                        cena = cena * 0.5;
+                    else
+                        cena = cena * 1;
+                }
+            }
+
+            if (karte == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(cena);
+        }
+
+
+        [AllowAnonymous]
         [ResponseType(typeof(float))]
         [Route("GetKarta/{tip}")]
         public IHttpActionResult GetKartaCena(string tip)
@@ -101,7 +189,7 @@ namespace WebApp.Controllers
                     else
                     {
                         t.ApplicationUserId = u.Id;
-                        t.ApplicationUser = u;
+                        //t.ApplicationUser = u;
                         t.VaziDo = DateTime.UtcNow;
                         u.Tickets.Add(t);
                         unitOfWork.TicketRepository.Add(t);
@@ -123,6 +211,101 @@ namespace WebApp.Controllers
 
             return Ok(retVal);
         }
+
+        [AllowAnonymous]
+        [ResponseType(typeof(string))]
+        [Route("GetCheckTicket/{id}")]
+        public IHttpActionResult GetCheck(string id)
+        {
+
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            string retVal = "Istekla karta!";
+
+            int i = Int32.Parse(id);
+            string day;
+            string year;
+            string month;
+
+
+            Ticket karta = unitOfWork.TicketRepository.Get(i);
+
+            string[] lines = karta.VaziDo.ToString().Split(' ', '/');
+            day = lines[1];
+            month = lines[0];
+            year = lines[2];
+
+            if (karta.Tip == "Vremenska")
+            {
+                var dateOne = DateTime.Now;
+
+                var diff = dateOne.Subtract(karta.VaziDo);
+                var res = String.Format("{0}:{1}:{2}", diff.Hours, diff.Minutes, diff.Seconds);
+                if (diff.Hours == 0)
+                {
+                    retVal = "Istekla karta!";
+                }
+            }
+            else if (karta.Tip == "Dnevna")
+            {
+                DateTime dateTime = DateTime.Now;
+                string day1;
+                string month1;
+                string year1;
+
+                string[] lines1 = dateTime.ToString().Split(' ', '/');
+
+                day1 = lines1[1];
+                month1 = lines1[0];
+                year1 = lines1[2];
+
+                if (day.Equals(day1) && month.Equals(month1) && year.Equals(year1))
+                {
+                    retVal = "Karta je validna";
+                }
+            }
+            else if (karta.Tip == "Mesecna")
+            {
+                DateTime dateTime = DateTime.Now;
+                string day1;
+                string month1;
+                string year1;
+
+                string[] lines1 = dateTime.ToString().Split(' ', '/');
+
+                day1 = lines1[1];
+                month1 = lines1[0];
+                year1 = lines1[2];
+
+                if (month.Equals(month1) && year.Equals(year1))
+                {
+                    retVal = "Karta je validna";
+                }
+            }
+            else if (karta.Tip == "Godisnja")
+            {
+                DateTime dateTime = DateTime.Now;
+                string day1;
+                string month1;
+                string year1;
+
+                string[] lines1 = dateTime.ToString().Split(' ', '/');
+
+                day1 = lines1[1];
+                month1 = lines1[0];
+                year1 = lines1[2];
+
+                if (year.Equals(year1))
+                {
+                    retVal = "Karta je validna";
+                }
+            }
+
+            return Ok(retVal);
+        }
+
+
 
         // GET: api/PriceOfTickets
         public IEnumerable<TicketPrice> GetPriceOfTicket()

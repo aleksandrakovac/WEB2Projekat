@@ -7,14 +7,98 @@
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
+ <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="account-holder">
+          <h3>Cenovnik</h3>
+        <br>
+        <div class="row">
+          <form>
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <label class="control-label" > Odaberite vrstu karte:</label> <br>
+                    <select class="select-control" id = "tip" #id = "ngModel" name="tip" class="control-label" [(ngModel)]="tip" >
+                      <option class="select-control form-group" *ngFor="let t of tipovi">
+                        {{t}} 
+                      </option>
+                    </select>
+                 </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                      <label class="control-label" > Odaberite tip korisnika:</label> <br>
+                      <select class="select-control" id = "korisnik" #id = "ngModel" name="korisnik" class="control-label" [(ngModel)]="korisnik" >
+                        <option class="select-control" *ngFor="let k of korisnici">
+                          {{k}} 
+                        </option>
+                      </select>
+                   </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <button (click)="TicketPrice()" class="btn btn-primary btn-block">Prikazi cenu ove karte</button>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <label class="control-label" >Cena: {{cijena1}}</label>
+                  </div>
+                </div>
+          </form>
+          <form #f="ngForm" (submit)="NewTicketPrice(f.value,f.value,f)" *ngIf = "(user == 'admin')">
+            
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+              <div class="form-group">
+                <label class="control-label" > Unesite novu cenu karte:</label>
+                <input class="form-control" placeholder="Nova cena" type="text" name="newPrice"  [(ngModel)]="newPrice"/>
+              </div>  
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" > Odaberite vrstu karte:</label> <br>
+                  <select class="select-control" id = "ticketType" #id = "ngModel" name="ticketType" class="control-label" [(ngModel)]="ticketType" >
+                    <option class="select-control" *ngFor="let t of tipovi">
+                      {{t}} 
+                    </option>
+                  </select>
+                </div>  
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <input class="form-control" type="submit"/>
+                  </div>  
+                </div>
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label class="control-label" > Unesite ID cenovnika koga zelite da obrisete: </label>
+                  <input class="form-control" placeholder="ID cenovnika" type="text" name="id1"  [(ngModel)]="id1"/>
+                </div>  
+              </div>
+             
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <button type="button" (click)="Add()" class="btn btn-primary btn-block">Dodaj cenovnik</button>
+                </div>  
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <button type="button" (click)="Delete()" class="btn btn-primary btn-block">Obrisi cenovnik</button>
+                  </div>  
+                </div>
+          </form>
+        </div>
+    </div>
+  </div>
+
+<!--
 <nav class="navbar navbar-expand-lg">
   <div>
     <ul class="navbar-nav">
       <li class="active">
-          <a routerLink="/cjenovnik" class="nav-link">RADNI DAN</a>
-          <a routerLink="/cjenovnik" class="nav-link">SUBOTA</a>
-          <a routerLink="/cjenovnik" class="nav-link">NEDELJA</a>
+          <a routerLink="/cjenovnik" class="nav-link">Radni dan</a>
+          <a routerLink="/cjenovnik" class="nav-link">Subota</a>
+          <a routerLink="/cjenovnik" class="nav-link">Nedelja</a>
       </li>
     </ul>
   </div>
 </nav>
+-->

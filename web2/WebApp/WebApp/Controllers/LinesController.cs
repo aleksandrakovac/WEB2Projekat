@@ -34,6 +34,20 @@ namespace WebApp.Controllers
             return unitOfWork.LineRepository.GetAll();
         }
 
+        [AllowAnonymous]
+        [ResponseType(typeof(void))]
+        [Route("GetEditLine/{oldline}/{newline}")]
+        public IHttpActionResult GetPromena(int oldline, int newline)
+        {
+            List<Line> lines = unitOfWork.LineRepository.GetAll().ToList();
+            Line line = lines.Find(x => x.Number == oldline);
+            line.Number = newline;
+            unitOfWork.LineRepository.Update(line);
+            unitOfWork.Complete();
+            return Ok();
+        }
+
+
         // GET: api/Lines/5
         [ResponseType(typeof(Line))]
         public IHttpActionResult GetLine(int id)

@@ -100,13 +100,13 @@ export class AuthHttpService{
              return this.http.post<any>(this.base_url + "/api/Account/Edit/" + user, data).subscribe();
             
         }
-
-        GetCenaKarte(tip: string): Observable<any>{
-            return this.http.get<any>(this.base_url + "/api/TicketPrice/GetKarta/" + tip);
-        }
-        GetKupiKartu(tipKarte: string, tipKorisnika: string, user : string): Observable<any>{
+        GetBuyTicket(tipKarte: string, tipKorisnika: string, user : string): Observable<any>{
            
             return this.http.get<any>(this.base_url + "/api/TicketPrice/GetKartaKupi2/" + tipKarte + "/" + tipKorisnika + "/" + user);
+        }
+
+        GetTicketPrice(tip: string): Observable<any>{
+            return this.http.get<any>(this.base_url + "/api/TicketPrice/GetKarta/" + tip);
         }
 
         GetAllLines() : Observable<any>{
@@ -117,19 +117,42 @@ export class AuthHttpService{
                 }) 
             });
         }
-        GetTipKorisnika(user : string): Observable<any>{
+        GetUserType(user : string): Observable<any>{
            
             return this.http.get<any>(this.base_url + "/api/Account/GetTipKorisnika/" + user);
         }
 
-        GetRolaKorisnika(user : string): Observable<any>{
+        GetKorisnikType(user : string): Observable<any>{
+           
+            return this.http.get<any>(this.base_url + "/api/Account/GetKorisnikType/" + user);
+        }
+
+        GetUserRole(user : string): Observable<any>{
            
             return this.http.get<any>(this.base_url + "/api/Account/GetRolaKorisnika/" + user);
         }
 
-        GetKorisnik(user : string): Observable<any>{
+        GetUser(user : string): Observable<any>{
            
             return this.http.get<any>(this.base_url + "/api/Account/GetKorisnik/" + user);
+        }
+        check(id : string):Observable<any>{
+            return this.http.get<any>(this.base_url + "/api/TicketPrice/GetCheckTicket/" + id);
+        }
+        GetEditLine(oldline:number,newline: number ): Observable<any>{
+            return this.http.get<any>(this.base_url + "/api/Lines/GetEditLine/" + oldline + "/" + newline);
+        }
+        GetTicketPrice2(tip: string, tipKorisnika : string): Observable<any>{
+            return this.http.get<any>(this.base_url + "/api/TicketPrice/GetTicketPrice2/" + tip + "/" + tipKorisnika);
+        }
+        GetChangePrice(tip:string,cena: number ): Observable<any>{
+            return this.http.get<any>(this.base_url + "/api/TicketPrice/GetChangePrice/" + tip + "/" + cena);
+        }
+        GetAddPricelist(tip:string,cena: number ): Observable<any>{
+            return this.http.get<any>(this.base_url + "/api/TicketPrice/GetAddPricelist/" + tip + "/" + cena);
+        }
+        GetDeletePricelist(id:number ): Observable<any>{
+            return this.http.get<any>(this.base_url + "/api/TicketPrice/GetDeletePricelist/" + id );
         }
 
 }

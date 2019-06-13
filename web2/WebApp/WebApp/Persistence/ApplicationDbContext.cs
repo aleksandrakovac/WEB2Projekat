@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -20,7 +21,7 @@ namespace WebApp.Persistence
         public DbSet<TypeTicket> TypeTicket { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
         public DbSet<TimetableType> TimetableType { get; set; }
-
+        public IQueryable<Ticket> Tickets { get; internal set; }
 
         public ApplicationDbContext()
             : base("name=DefaultConnection", throwIfV1Schema: false)

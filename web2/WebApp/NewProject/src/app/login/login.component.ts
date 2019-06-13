@@ -20,12 +20,14 @@ export class LoginComponent implements OnInit {
   logIn(user:User,form: NgForm){
     let l =  this.http.logIn(user.username, user.password);
     //this.http.logIn2(user.username,user.password);
-    //form.reset();
-    //console.log("prijavljen");
+    //
     if(l){
       console.log("prijavljen");
     }
+    this.router.navigate(["/home"]);
     //window.location.reload();
+    //form.reset();
+
   }
 
 }

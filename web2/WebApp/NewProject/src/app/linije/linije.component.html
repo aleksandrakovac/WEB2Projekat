@@ -6,15 +6,130 @@
        <!--forms-->
  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-
+ 
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="account-holder">
+  <div class="account-holder">
+      <div class="row">
+      <form >
+          <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+              <div class="form-group">
+                  <label class="control-label required">Gradske linije: </label>
+                  <select class="form-control">
+                      <option>
+                          1 KLISA - CENTAR - LIMAN I
+                      </option>
+                      <option>
+                          2 CENTAR - NOVO NASELJE
+                      </option>
+                      <option>
+                         3 PETROVARADIN - CENTAR - DETELINARA
+                        </option>
+                      <option>
+                           4 LIMAN IV - CENTAR - ŽELEZNIČKA STANICA        
+                      </option>
+                      <option>
+                          5 TEMERINSKI PUT - CENTAR - AVIJATIČARSKO NASELJE
+                      </option>
+                      <option>
+                         6 PODBARA - ADICE  
+                      </option>
+                      <option>
+                          7 NOVO NASELJE - ŽELEZNIČKA STANICA - LIMAN IV - NOVO NASELJE                  
+                      </option>
+                      <option>
+                          8 NOVO NASELJE - CENTAR - LIMAN I                            
+                      </option>
+                      <option>
+                          9	NOVO NASELJE - LIMAN - PETROVARADIN                                            
+                      </option>
+                      <option>
+                          10 CENTAR - INDUSTRIJSKA ZONA JUG
+                      </option>
+                      <option>
+                          11  ŽELEZNIČKA STANICA - BOLNICA - LIMAN - ŽELEZNIČKA STANICA    
+                      </option>
+                      <option>
+                          12 CENTAR - TELEP                                 
+                      </option>
+                      <option>
+                          13 UNIVERZITET - GRBAVICA - DETELINARA      
+                      </option>
+                      <option>
+                          14 CENTAR - SAJLOVO  
+                      </option>
+                      <option>
+                          15 CENTAR - INDUSTRIJSKA ZONA SEVER        
+                      </option>
+                      <option>
+                          16 ŽELEZNIČKA STANICA - PRISTANIŠNA ZONA
+                      </option>
+                      <option>
+                         17 BIG CENTAR - CENTAR- ŽELEZNIČKA STANICA - BIG CENTAR           
+                      </option>
+                  </select>    
+              </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+              <div class="form-group">
+                  <label class="control-label required">Prigradske: </label>
+                  <select class="form-control">
+                      <option>
+                          22 NOVI SAD (Ž.S.) - KAĆ
+                      </option>
+                      <option>
+                          23 NOVI SAD (Ž.S.) - BUDISAVA     
+                      </option>
+                      <option>
+                          24 NOVI SAD (Ž.S.) - KOVILJ
+                      </option>
+                      <option>
+                          30  NOVI SAD (Ž.S.) - PEJIĆEVI SALAŠI  
+                      </option>
+                      <option>
+                          24 NOVI SAD (Ž.S.) - KOVILJ
+                      </option>
+                      <option>
+                          35 NOVI SAD (Ž.S.)  - ČENEJ
+                      </option>  
+                      <option>
+                          24 NOVI SAD (Ž.S.) - KOVILJ
+                      </option>
+                      <option>
+                          41 NOVI SAD (ZS) - RUMENKA
+                      </option>
+                      <option>
+                          42 NOVI SAD (ZS) - KISAC
+                      </option>
+                      <option>
+                          43 NOVI SAD (ZS) - STEPANOVICEVO
+                      </option>
+                      <option>
+                          52 NOVI SAD (Ž.S.) - VETERNIK     
+                      </option>
+                      <option>
+                          53 NOVI SAD (Ž.S.) - FUTOG STARI
+                      </option>
+                      <option>
+                          54 NOVI SAD (Ž.S.) - FUTOG (GRMEČKA)
+                      </option>
+                  </select>    
+              </div>
+          </div>
+        </form>
+        <form #f="ngForm" (submit)="EditLine(f.value,f)" *ngIf = "(user == 'admin')">
+          <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label class="control-label required">
+                    Unesite novu oznaku linije:
+                    <input type="text" name="lineNumber"  [(ngModel)]="lineNumber"/>
+                </label>
+                <br>
+                <input type="submit" />
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
 
-                <ul class="navbar-nav">
-                        <li *ngFor = "let l of lines">
-                           {{l.Number}}
-                        </li>
-                </ul>
-  </div>
-  </div>

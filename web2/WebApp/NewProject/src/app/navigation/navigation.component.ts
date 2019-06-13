@@ -26,10 +26,10 @@ export class NavigationComponent implements OnInit {
         else
         {
           let decodedJwtJsonData = window.atob(jwtData)
-        let decodedJwtData = JSON.parse(decodedJwtJsonData)
-        this.user = decodedJwtData.nameid;
+          let decodedJwtData = JSON.parse(decodedJwtJsonData)
+          this.user = decodedJwtData.nameid;
         }
-        this.http.GetRolaKorisnika(this.user).subscribe((korisnik)=>{
+          this.http.GetUserRole(this.user).subscribe((korisnik)=>{
           this.korisnik = korisnik;
           err => console.log(err);
         });

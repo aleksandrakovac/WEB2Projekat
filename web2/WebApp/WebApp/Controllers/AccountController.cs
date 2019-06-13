@@ -20,6 +20,7 @@ using WebApp.Persistence;
 using WebApp.Persistence.UnitOfWork;
 using WebApp.Providers;
 using WebApp.Results;
+using System.Data.Entity;
 
 namespace WebApp.Controllers
 {
@@ -345,6 +346,24 @@ namespace WebApp.Controllers
             {
                 retVal = "neregistrovan";
             }
+
+            return Ok(retVal);
+        }
+
+        [AllowAnonymous]
+        [ResponseType(typeof(string))]
+        [Route("GetKorisnikType/{user}")] //student, penzioner ili regularni
+        public IHttpActionResult GetKorisnikType(string user)
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            var id = User.Identity.GetUserId();
+            ApplicationUser u = userManager.FindById(user);
+
+            var retVal = u.Tip;
+
+            
 
             return Ok(retVal);
         }
