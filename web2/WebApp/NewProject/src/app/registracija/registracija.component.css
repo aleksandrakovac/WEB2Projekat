@@ -28,6 +28,7 @@ label { }
 .form-control:focus { }
 .textarea.form-control { }
 .required { }
+.select-control {  font-family: 'Hind Siliguri', sans-serif; border-radius: 0px; text-transform: capitalize; font-size: 12px; font-weight: 500; width: 100%; height: 50px; padding: 14px; line-height: 1.42857143; }
 
 .form-control { border-radius: 0px; text-transform: capitalize; color: #aca5a5; font-size: 12px; font-weight: 500; width: 100%; height: 50px; padding: 14px; line-height: 1.42857143; border: transparent; background-color: #f1f1f1; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075); box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075); }
 .input-group { position: relative; display: table; border-collapse: separate; }

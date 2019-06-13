@@ -15,6 +15,8 @@ export class LinijeComponent implements OnInit {
   user:string;
   line: Line;
   lineNumber: number;
+  tip: string;
+  tipovi: string[] = ["Gradski", "Prigradski"];
   
   constructor(private http:AuthHttpService) { }
 

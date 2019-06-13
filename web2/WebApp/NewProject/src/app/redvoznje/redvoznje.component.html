@@ -16,7 +16,7 @@
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label class="control-label" >Red voznje vazi od </label>
-                  <select class="control-label" id="vaziod" placeholder="Izaberite datum:" onchange="lista_linija();" name="vaziod">
+                  <select id="vaziod" placeholder="Izaberite datum:" onchange="lista_linija();" name="vaziod">
                     <option value="2019-05-25"> 
                       25.05.2019 
                     </option>
@@ -26,7 +26,7 @@
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label class="control-label" >Red voznje </label>
-                  <select class="form-control" [(ngModel)]="selectedTimetableType" name="selectedTimetableType">
+                  <select [(ngModel)]="selectedTimetableType" name="selectedTimetableType">
                     <option *ngFor="let TimetableType of timetableInfo.TimetableTypes" [ngValue]="TimetableType">
                       {{TimetableType.Name}}
                     </option>
@@ -36,7 +36,7 @@
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label class="control-label" >Dan </label>
-                  <select class="form-control" [(ngModel)]="selectedDay" name="selectedDay">
+                  <select [(ngModel)]="selectedDay" name="selectedDay">
                     <option *ngFor="let Day of timetableInfo.Days" [ngValue]="Day">
                       {{Day.DayOfWeek}}
                     </option>
@@ -46,7 +46,7 @@
               <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                 <div class="form-group">
                   <label class="control-label" >Linija </label>
-                  <select class="form-control" [(ngModel)]="selectedLine" name="selectedLine" (change)="changeselectedLine()">
+                  <select [(ngModel)]="selectedLine" name="selectedLine" (change)="changeselectedLine()">
                     <option *ngFor="let Line of timetableInfo.Lines" [ngValue]="Line">
                       {{Line.Number}}
                     </option>

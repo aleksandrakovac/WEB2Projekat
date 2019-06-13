@@ -20,8 +20,10 @@ export class RegistracijaComponent implements OnInit {
     confirmPassword: ['', Validators.required],
     email: ['', Validators.required],
     date: ['', Validators.required],
-    tip: ['', Validators.required]
+    tip: ['', Validators.required],
+   // ImageUrl:['', Validators.required]
   });
+    selectedFile: File = null;
 
   constructor(private http: AuthHttpService, private fb: FormBuilder, private router: Router) { }
 
@@ -31,7 +33,18 @@ export class RegistracijaComponent implements OnInit {
   register(){
     let regModel: User = this.registacijaForm.value;
     this.http.registration(regModel);
-    //form.reset();
+    //let formData: FormData = new FormData();
+
+    /*if(this.selectedFile != null)
+    {
+      formData.append('ImageUrl', this.selectedFile, this.selectedFile.name);
+    }
+    this.http.registration(regModel);
+    //form.reset();*/
   }
+/*
+  UploadFile(event) {
+    this.selectedFile = <File>event.target.files[0];
+  }*/
 
 }
